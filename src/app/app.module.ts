@@ -10,11 +10,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
+import { UserComponent } from './user/user.component';
+import { ProductComponent } from './product/product.component';
+import { SalesComponent } from './sales/sales.component';
+import { CustomerComponent } from './customer/customer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    UserComponent,
+    ProductComponent,
+    SalesComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +35,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
