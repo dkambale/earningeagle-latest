@@ -1,0 +1,59 @@
+<div class="container">
+
+<nav class="navbar">
+  <ul class="nav-list">
+    <li><a routerLink="/user">User</a></li>
+    <li><a routerLink="/customer">Customer</a></li>
+    <li><a routerLink="/product">Product</a></li>
+    <li><a routerLink="/sales">Sales</a></li>
+    <li><a routerLink="/buy">Buy</a></li>
+    <li><a routerLink="/buy">Report</a></li>
+    <li><a routerLink="/buy">Refund</a></li>
+  </ul>
+
+  </nav>
+  <div class="search-bar">
+    <!-- <input type="text" [(ngModel)]="searchText" placeholder="Enter search term"> -->
+
+    <button (click)="searchByProductName()" [ngClass]="{'clicked': isProductNameClicked}">Search by Product Name</button>
+  
+    <button (click)="searchByBarcode()" [ngClass]="{'clicked': isBarcodeClicked}">Search by Barcode</button>
+  
+    <button (click)="searchById()" [ngClass]="{'clicked': isIdClicked}">Search by ProductID</button>
+  
+    
+  </div>
+
+
+  <div style="width: 700px; height: 500px; background-color: rgb(96, 100, 100); float: left;">
+  <table class="product-table">
+    <thead>
+      <tr class="table-buttons">
+        <th rowspan="2">Product Name</th>
+        <th> Quantity </th>
+        <th> Price </th>
+        <th> Amount </th>
+      </tr>
+    </thead>
+  
+  </table>
+  </div>
+<div class="search-bar" style="width: 575px;height: 500px;background-color: rgb(96, 100, 100);float: right;">
+  <button (click)="cash()" [ngClass]="{'clicked': isProductNameClicked}">Cash</button>
+  
+  <!-- <button (click)="creditCard()" [ngClass]="{'clicked': isBarcodeClicked}">Credit Card</button>
+
+  <button (click)="debitCard()" [ngClass]="{'clicked': isIdClicked}">Debit Card</button>
+  
+  <button (click)="check()" [ngClass]="{'clicked': isProductNameClicked}">Check</button>
+  
+  <button (click)="voucher()" [ngClass]="{'clicked': isBarcodeClicked}">Voucher</button>
+
+  <button (click)="giftCard()" [ngClass]="{'clicked': isIdClicked}">Gift Card</button> -->
+
+</div>
+</div>
+
+
+
+

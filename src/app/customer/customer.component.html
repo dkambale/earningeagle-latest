@@ -1,0 +1,58 @@
+<div class="container">
+  
+<nav class="navbar">
+  <ul class="nav-list">
+    <li><a routerLink="/user">User</a></li>
+    <li><a routerLink="/customer">Customer</a></li>
+    <li><a routerLink="/product">Product</a></li>
+    <li><a routerLink="/sales">Sales</a></li>
+    <li><a routerLink="/home">Home</a></li>
+  </ul>
+</nav>
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+  <div class="form-container">
+    <div class="form-group">
+      <label for="customerId">ID</label>
+      <input type="text" id="customerId" formControlName="customerId">
+    </div>
+    <div class="form-group">
+      <label for="customerName">Customer Name</label>
+      <input type="text" id="customerName" formControlName="customerName">
+    </div>
+    <div class="form-group">
+      <label for="contactNumber">Contact Number</label>
+      <input type="number" id="contactNumber" formControlName="contactNumber">
+    </div>
+    <div class="form-group">
+      <label for="emailId">Email-Id</label>
+      <input type="text" id="emailId" formControlName="emailId">
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" id="address" formControlName="address">
+    </div>
+    <div class="form-group">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+    </div>
+    <div class="form-group">
+      <label for="createdAt">Created At</label>
+      <input type="datetime-local" id="createdAt" formControlName="createdAt">
+    </div>
+    <div class="form-group">
+      <label for="updatedAt">Updated At</label>
+      <input type="datetime-local" id="updatedAt" formControlName="updatedAt">
+    </div>
+    <div class="form-group">
+      <label for="isActive">Is Active</label>
+      <input type="text" id="isActive" formControlName="isActive">
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+
+<div *ngIf="showSuccessMessage" class="success-message">
+  Form submitted successfully!
+</div>
+
+</div>

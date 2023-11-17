@@ -16,6 +16,7 @@ import { UserComponent } from './user/user.component';
 import { ProductComponent } from './product/product.component';
 import { SalesComponent } from './sales/sales.component';
 import { CustomerComponent } from './customer/customer.component';
+import { MoreComponent } from './more/more.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CustomerComponent } from './customer/customer.component';
     UserComponent,
     ProductComponent,
     SalesComponent,
-    CustomerComponent
+    CustomerComponent,
+    MoreComponent
   ],
   imports: [
     BrowserModule,

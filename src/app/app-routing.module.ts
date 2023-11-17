@@ -6,6 +6,7 @@ import { UserComponent } from './user/user.component';
 import { ProductComponent } from './product/product.component';
 import { SalesComponent } from './sales/sales.component';
 import { CustomerComponent } from './customer/customer.component';
+import { MoreComponent } from './more/more.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path: 'customer', component: CustomerComponent },
   { path: 'product', component: ProductComponent },
   { path: 'sales', component: SalesComponent },
+  { path: 'more', component: MoreComponent },
 ];
+
  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

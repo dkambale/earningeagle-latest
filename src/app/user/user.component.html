@@ -1,0 +1,70 @@
+<div class="container">
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li><a routerLink="/user">User</a></li>
+      <li><a routerLink="/customer">Customer</a></li>
+      <li><a routerLink="/product">Product</a></li>
+      <li><a routerLink="/sales">Sales</a></li>
+      <li><a routerLink="/home">Home</a></li>
+     
+    </ul>
+  </nav>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-container">
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input type="text" id="id" formControlName="id">
+      </div>
+      <div class="form-group">
+        <label for="userName">Username</label>
+        <input type="text" id="userName" formControlName="userName">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password">
+      </div>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" formControlName="firstName">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" formControlName="lastName">
+      </div>
+      <div class="form-group">
+        <label for="userType">User Type</label>
+        <input type="text" id="userType" formControlName="userType">
+      </div>
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number</label>
+        <input type="tel" id="mobileNumber" formControlName="mobileNumber">
+      </div>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of Birth</label>
+        <input type="date" id="dateOfBirth" formControlName="dateOfBirth">
+      </div>
+      <div class="form-group">
+        <label for="createdAt">Created At</label>
+        <input type="datetime-local" id="createdAt" formControlName="createdAt">
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" formControlName="address">
+      </div>
+      <div class="form-group">
+        <label for="isActive">Is Active</label>
+        <input type="text" id="isActive" formControlName="isActive">
+      </div>
+      <div class="form-group">
+        <label for="token">Token</label>
+        <input type="text" id="token" formControlName="token">
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  
+  <div *ngIf="showSuccessMessage" class="success-message">
+    Form submitted successfully!
+  </div>
+  
+</div>

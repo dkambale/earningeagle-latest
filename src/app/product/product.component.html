@@ -1,0 +1,95 @@
+<div class="container">
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li><a routerLink="/user">User</a></li>
+      <li><a routerLink="/customer">Customer</a></li>
+      <li><a routerLink="/product">Product</a></li>
+      <li><a routerLink="/sales">Sales</a></li>
+      <li><a routerLink="/home">Home</a></li>
+    </ul>
+  </nav>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-container">
+      <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" id="productName" formControlName="productName">
+      </div>
+      <div class="form-group">
+        <label for="productPrice">Product Price</label>
+        <input type="number" id="productPrice" formControlName="productPrice">
+      </div>
+      <div class="form-group">
+        <label for="productBarcode">Product Barcode</label>
+        <input type text id="productBarcode" formControlName="productBarcode">
+      </div>
+      <div class="form-group">
+        <label for="productUnit">Product Unit</label>
+        <input type="text" id="productUnit" formControlName="productUnit">
+      </div>
+      <div class="form-group">
+        <label for="productQuantity">Product Quantity</label>
+        <input type="number" id="productQuantity" formControlName="productQuantity">
+      </div>
+      <!-- Add HTML elements for the new form fields -->
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" id="description" formControlName="description">
+      </div>
+      <div class="form-group">
+        <label for="buyPrice">Buy Price</label>
+        <input type="number" id="buyPrice" formControlName="buyPrice">
+      </div>
+      <div class="form-group">
+        <label for="sellPrice">Sell Price</label>
+        <input type="number" id="sellPrice" formControlName="sellPrice">
+      </div>
+      <div class="form-group">
+        <label for="govtGST">Government GST</label>
+        <input type="number" id="govtGST" formControlName="govtGST">
+      </div>
+      <div class="form-group">
+        <label for="stateGST">State GST</label>
+        <input type="number" id="stateGST" formControlName="stateGST">
+      </div>
+      <div class="form-group">
+        <label for="discount">Discount</label>
+        <input type="number" id="discount" formControlName="discount">
+      </div>
+      <div class="form-group">
+        <label for="isActive">Is Active</label>
+        <input type="text" id="isActive" formControlName="isActive">
+      </div>
+      <div class="form-group">
+        <label for="uniqueNumber">Unique Number</label>
+        <input type="text" id="uniqueNumber" formControlName="uniqueNumber">
+      </div>
+      <div class="form-group">
+        <label for="stockAlert">Stock Alert</label>
+        <input type="text" id="stockAlert" formControlName="stockAlert">
+      </div>
+      <div class="form-group">
+        <label for="expireDate">Expire Date</label>
+        <input type="date" id="expireDate" formControlName="expireDate">
+      </div>
+      <div class="form-group">
+        <label for="vendorId">Vendor ID</label>
+        <input type="text" id="vendorId" formControlName="vendorId">
+      </div>
+      <div class="form-group">
+        <label for="unitId">Unit ID</label>
+        <input type="text" id="unitId" formControlName="unitId">
+      </div>
+      <div class="form-group">
+        <label for="gstUnit">GST Unit</label>
+        <input type="number" id="gstUnit" formControlName="gstUnit">
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  
+  <div *ngIf="showSuccessMessage" class="success-message">
+    Form submitted successfully!
+  </div>
+  
+
+</div>
