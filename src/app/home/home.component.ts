@@ -12,9 +12,10 @@ export class HomeComponent {
   sales: string;
   more: string;
   buy: string;
+  products:string;
   isProductNameClicked = false;
   isBarcodeClicked = false;
-  isIdClicked = false;
+  isIdClicked = true;
   isCashClicked= true;
   searchText: string = ''; 
 
@@ -24,6 +25,7 @@ export class HomeComponent {
     this.sales = ''; 
     this.more = '';
     this.buy = '';
+    this.products='';
     
   }
 

@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="center-container">
       <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-md-offset-2 col-sm-offset-1">
@@ -16,5 +16,30 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
+  <div class="login-area login-s2">
+    <div class="container">
+        <div class="login-box ptb--100">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="login-form-head">
+                    <h4>Sign In</h4>
+                </div>
+                <div class="login-form-body">
+                    <div class="form-gp">
+                      <label for="username">UserName</label>
+                      <input type="text" class="form-control" id="username" formControlName="username">
+                    </div>
+                    <div class="form-gp">
+                      <label for="email">Password</label>
+                      <input type="password" class="form-control" id="password" formControlName="password">
+                    </div>
+                    <div class="submit-btn-area">
+                        <button id="form_submit" type="submit">Submit <i class="ti-arrow-right"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
   

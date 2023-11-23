@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { LoginService } from '../login.service';
+import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 
 
@@ -25,10 +25,11 @@ export class LoginComponent implements OnInit {
 
   login() {
 
-    this.loginService.login(this.loginForm.value["username"],this.loginForm.value["password"]).subscribe(res=>{
+    this.loginService.loginPost(this.loginForm.value["username"],this.loginForm.value["password"]).subscribe(res=>{
 
       alert(res);
-      if (res == 'success') {
+      if (res != null ) {
+        localStorage.setItem("user",JSON.stringify(res));
         this.router.navigate(['/home']);
       } else {
         alert('Login failed. Please try again.');

@@ -1,12 +1,167 @@
-<div class="container">
-  <nav class="navbar">
-    <ul class="nav-list">
-      <li><a routerLink="/user">User</a></li>
-      <li><a routerLink="/customer">Customer</a></li>
-      <li><a routerLink="/product">Product</a></li>
-      <li><a routerLink="/sales">Sales</a></li>
-      <li><a routerLink="/home">Home</a></li>
-    </ul>
-  </nav>
-  
-</div>
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <div class="row no-gutters">
+        <div class="col-sm-7">
+          <div class="grid-col">
+            <div class="ml-1" style="display: flex;">
+              <div class="fw-icons0 col-lg-1 col-sm-5" [ngClass]="selectedType=='all'? 'selectedCss':'deselectedCss'"><i
+                  class="fa fa-asterisk" (click)="byALlSearch()"></i></div>
+              <div class="fw-icons1 col-lg-1 col-sm-5"
+                [ngClass]="selectedType=='barcode'? 'selectedCss':'deselectedCss'"><i class="fa fa-barcode"
+                  (click)="byBarcode()"></i></div>
+              <div class="fw-icons2 col-lg-1 col-sm-5" [ngClass]="selectedType=='id'? 'selectedCss':'deselectedCss'"><i
+                  class="fa fa-info" (click)="byid()"></i></div>
+              <div class="fw-icons2 col-lg-1 col-sm-5" [ngClass]="selectedType=='name'? 'selectedCss':'deselectedCss'">
+                <i class="fa fa-tag" (click)="byname()"></i>
+              </div>
+              <div class="col-lg-2 clearfix">
+                <div class="search-box">
+                  <form (ngSubmit)="onsubmit()">
+                    <input type="text" name="search" placeholder="    Search Products By Name, Code or Bar code "
+                      [(ngModel)]="searchValue" required>
+                    <i class=" ti-search col-lg-11 "></i>
+                  </form>
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </div>
+          <div class="main-content-inner">
+            <div class="row">
+              <!-- table primary start -->
+              <div>
+                <div class="card ">
+                  <div class="card-body">
+                    <div class="single-table">
+                      <div class="table-responsive">
+                        <table class="table text-center">
+                          <thead class="text-uppercase bg-primary">
+                            <tr class="text-white">
+                              <th scope="col">ID</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">date</th>
+                              <th scope="col">price</th>
+                              <th scope="col">action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Mark</td>
+                              <td>09 / 07 / 2018</td>
+                              <td>$120</td>
+                              <td><i class="ti-trash"></i></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>jone</td>
+                              <td>09 / 07 / 2018</td>
+                              <td>$150</td>
+                              <td><i class="ti-trash"></i></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Mark</td>
+                              <td>09 / 07 / 2018</td>
+                              <td>$120</td>
+                              <td><i class="ti-trash"></i></td>
+                            </tr>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>jone</td>
+                              <td>09 / 07 / 2018</td>
+                              <td>$150</td>
+                              <td><i class="ti-trash"></i></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- table primary end -->
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="grid-col">
+
+            <button type="button" class="btn btn-flat btn-primary mb-3" disabled><i
+                class="fa fa-trash-o"></i>Delete</button>
+            <button type="button" class="btn btn-flat btn-success mb-3" disabled><i
+                class=" ti-search col-lg-0 "></i>Search</button>
+            <button type="button" class="btn btn-flat btn-danger mb-3" disabled><i
+                class="fa fa-trash-o"></i>Quantity</button>
+            <button type="button" class="btn btn-flat btn-warning mb-3" disabled><i class="fa fa-cart-plus"></i>New
+              Sell</button>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="grid-col">Cash</div>
+              </div>
+              <div class="col-md-4">
+                <div class="grid-col">Credt Card</div>
+              </div>
+              <div class="col-md-4">
+                <div class="grid-col">Debit Card</div>
+              </div>
+              <div class="col-md-4">
+                <div class="grid-col">Check</div>
+              </div>
+              <div class="col-md-4">
+                <div class="grid-col">Voucher</div>
+              </div>
+              <div class="col-md-4">
+                <div class="grid-col">Gift Card</div>
+              </div>
+            </div>
+            <div style="height:150px;width: 250px; text-align: center;color: rgb(106, 104, 102) ;">
+              Earning Eagle
+            </div>
+
+            <div class="row">
+              <div class="col-lg-3 col-md-6">
+                <div class="grid-col">Dissocunt</div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="grid-col"><i class="fa fa-commenting"></i>Comment</div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="grid-col"><i class="fa fa-male"></i>Customer</div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="grid-col"><i class="fa fa-users"></i>         User</div>
+              </div>
+              <div class="col-md-4">
+                <div class="grid-col">Save Cell</div>
+              </div>
+              <div class="col-md-4">
+                <div class="grid-col">Refund</div>
+              </div>
+              <div class="col-md-4">
+                <div class="grid-col">Payment</div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                <div class="grid-col"><i class="ti-lock"></i>Lock</div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div style="text-align: center;" class="grid-col">Transfer</div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="grid-col">Void Order</div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="grid-col">Cash Drawer</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

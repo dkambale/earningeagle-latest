@@ -17,6 +17,8 @@ import { ProductComponent } from './product/product.component';
 import { SalesComponent } from './sales/sales.component';
 import { CustomerComponent } from './customer/customer.component';
 import { MoreComponent } from './more/more.component';
+import { ProductsComponent } from './products/products.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { MoreComponent } from './more/more.component';
     ProductComponent,
     SalesComponent,
     CustomerComponent,
-    MoreComponent
+    MoreComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { MoreComponent } from './more/more.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    FormsModule
     
   ],
   providers: [],

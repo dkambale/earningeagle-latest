@@ -1,32 +1,131 @@
-.container{
-  background-color: #141515;
-  width: 100%;
-  height:100%;
+  .fw-icons0 a {
+      display: block;
+      text-decoration: none;
+      color: #333;
+      position: relative;
   }
-.navbar {
-  background-color: #4f5354; 
-  color: #fff; 
-  padding: 10px; 
+
+  .fw-icons0 i {
+      margin-right: 5px; 
+  }
+  .fw-icons1 a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    position: relative;
 }
-  
-  .nav-list {
-    list-style: none; /* Remove list bullet points */
-    padding: 0; /* Remove default list padding */
-    display: flex; /* Display the list items horizontally */
-    justify-content: center; /* Center-align the list items */
+
+.fw-icons1 i {
+    margin-right: 5px; 
+}
+.fw-icons2 a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+}
+
+.fw-icons2 i {
+  margin-right: 5px; 
+}
+.fw-icons3 a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+}
+
+.fw-icons3 i {
+  margin-right: 5px; 
+}
+
+  .fw-icons0 a:hover::after {
+      content: "Search By Barcode, ID, Name";
+      position: absolute;
+      top: 100%;
+      left: 50%; 
+      transform: translateX(-50%);
+      background-color: rgb(59, 59, 108); 
+      color: #fff; 
+      padding: 2px;
+      border-radius: 5px; 
+      white-space: nowrap; 
+      
   }
-  
-  .nav-list li {
-    margin: 0 20px; /* Add spacing between list items */
+  .fw-icons1 a:hover::after {
+      content: "Search By Barcode ";
+      position: absolute;
+      top: 100%;
+      left: 50%; 
+      transform: translateX(-50%);
+      background-color: rgb(59, 59, 108); 
+      color: #fff; 
+      padding: 2px;
+      border-radius: 5px; 
+      white-space: nowrap; 
   }
-  
-  .nav-list a {
-    text-decoration: none; /* Remove underline from links */
-    color: #fff; /* Text color for links */
+  .fw-icons2 a:hover::after {
+      content: "Search By ID ";
+      position: absolute;
+      top: 100%;
+      left: 50%; 
+      transform: translateX(-50%);
+      background-color: rgb(59, 59, 108); 
+      color: #fff; 
+      padding: 2px;
+      border-radius: 5px; 
+      white-space: nowrap; 
   }
-  
-  /* Style for active link (optional) */
-  .nav-list a.active {
-    font-weight: bold;
+  .fw-icons3 a:hover::after {
+      content: "Search By Name ";
+      position: absolute;
+      top: 100%;
+      left: 50%; 
+      transform: translateX(-50%);
+      background-color: rgb(59, 59, 108); 
+      color: #fff; 
+      padding: 2px;
+      border-radius: 5px; 
+      white-space: nowrap; 
   }
-  
+
+  .selectedCss{
+    background-color: rgb(172, 172, 255); 
+  }
+
+  .deselectedCss {
+    
+    color: 
+    rgb(0, 0, 0);
+  }
+
+.button1{
+  background-color: cornflowerblue;
+}
+
+
+
+
+
+
+.payment-button {
+  display: flex;
+  align-items: center;
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.payment-button:hover {
+  background-color: #45a049;
+}
+
+.payment-button img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}

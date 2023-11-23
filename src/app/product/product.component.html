@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="height: 100%;width: 100%;">
   <nav class="navbar">
     <ul class="nav-list">
       <li><a routerLink="/user">User</a></li>
@@ -8,6 +8,7 @@
       <li><a routerLink="/home">Home</a></li>
     </ul>
   </nav>
+  <div class="fullscreen-container">
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
     <div class="form-container">
       <div class="form-group">
@@ -30,7 +31,6 @@
         <label for="productQuantity">Product Quantity</label>
         <input type="number" id="productQuantity" formControlName="productQuantity">
       </div>
-      <!-- Add HTML elements for the new form fields -->
       <div class="form-group">
         <label for="description">Description</label>
         <input type="text" id="description" formControlName="description">
@@ -91,5 +91,5 @@
     Form submitted successfully!
   </div>
   
-
+  </div>
 </div>
