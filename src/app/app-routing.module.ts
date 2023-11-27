@@ -23,6 +23,7 @@ const routes: Routes = [
       { path: 'product', component: ProductComponent },
       { path: 'sales', component: SalesComponent },
       { path: 'more', component: MoreComponent },
+      { path: 'login', component: LoginComponent }
     ]
   }
 

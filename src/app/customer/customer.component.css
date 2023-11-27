@@ -3,89 +3,133 @@
   width: 100%;
   height:100%;
   }
-.navbar {
-  background-color: #4f5354; 
-  color: #fff; 
-  padding: 10px; 
-}
-  
-  .nav-list {
-    list-style: none; 
-    padding: 0; 
-    display: flex;
-    justify-content: center;
+
+  .draggable-container {
+    position: relative;
+    
+
   }
   
-  .nav-list li {
-    margin: 0 20px; 
-  }
-  
-  .nav-list a {
-    text-decoration: none; 
-    color: #fff;
-  }
-  
- 
-  .nav-list a.active {
-    font-weight: bold;
+  .draggable-container > div {
+    height: 100px;
+    width: 100px;
+    cursor: move;
   }
 
-  .centered-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  form {
-    background-color: #f7f7f7;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: left;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-  }
-  
-  input[type="text"],
-  input[type="number"],
-  input[type="date"] {
+  .product-table {
+    background-color: #185862;
+    color: #fff;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border-collapse: collapse;
+    /* margin-top: 20px; */
   }
-  
-  input[type="checkbox"] {
-    margin-right: 5px;
-  }
-  
-  button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .success-message {
-    color: #28a745;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
 
+
+
+
+  .fw-icons0 a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    position: relative;
+}
+
+.fw-icons0 i {
+    margin-right: 5px; 
+}
+.fw-icons1 a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+}
+
+.fw-icons1 i {
+  margin-right: 5px; 
+}
+.fw-icons2 a {
+display: block;
+text-decoration: none;
+color: #333;
+position: relative;
+}
+
+.fw-icons2 i {
+margin-right: 5px; 
+}
+.fw-icons3 a {
+display: block;
+text-decoration: none;
+color: #333;
+position: relative;
+}
+
+.fw-icons3 i {
+margin-right: 5px; 
+}
+
+.fw-icons0 a:hover::after {
+    content: "Search By Barcode, ID, Name";
+    position: absolute;
+    top: 100%;
+    left: 50%; 
+    transform: translateX(-50%);
+    background-color: rgb(59, 59, 108); 
+    color: #fff; 
+    padding: 2px;
+    border-radius: 5px; 
+    white-space: nowrap; 
+    
+}
+.fw-icons1 a:hover::after {
+    content: "Search By Barcode ";
+    position: absolute;
+    top: 100%;
+    left: 50%; 
+    transform: translateX(-50%);
+    background-color: rgb(59, 59, 108); 
+    color: #fff; 
+    padding: 2px;
+    border-radius: 5px; 
+    white-space: nowrap; 
+}
+.fw-icons2 a:hover::after {
+    content: "Search By ID ";
+    position: absolute;
+    top: 100%;
+    left: 50%; 
+    transform: translateX(-50%);
+    background-color: rgb(59, 59, 108); 
+    color: #fff; 
+    padding: 2px;
+    border-radius: 5px; 
+    white-space: nowrap; 
+}
+.fw-icons3 a:hover::after {
+    content: "Search By Name ";
+    position: absolute;
+    top: 100%;
+    left: 50%; 
+    transform: translateX(-50%);
+    background-color: rgb(59, 59, 108); 
+    color: #fff; 
+    padding: 2px;
+    border-radius: 5px; 
+    white-space: nowrap; 
+}
+
+.selectedCss{
+  background-color: rgb(172, 172, 255); 
+}
+
+.deselectedCss {
   
-  
-  
+  color: 
+  rgb(0, 0, 0);
+}
+
+
+.container-1{
+  height: 100%;
+  width:100%;
+}

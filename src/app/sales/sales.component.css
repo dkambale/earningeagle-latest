@@ -107,25 +107,3 @@
 
 
 
-
-.payment-button {
-  display: flex;
-  align-items: center;
-  background-color: #4CAF50;
-  color: white;
-  padding: 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.payment-button:hover {
-  background-color: #45a049;
-}
-
-.payment-button img {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-}
