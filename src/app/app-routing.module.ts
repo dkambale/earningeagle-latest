@@ -10,6 +10,7 @@ import { MoreComponent } from './more/more.component';
 import { ProductsComponent } from './products/products.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './jwt.interceptor';
+import { TaxRatesComponent } from './tax-rates/tax-rates.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -23,7 +24,9 @@ const routes: Routes = [
       { path: 'product', component: ProductComponent },
       { path: 'sales', component: SalesComponent },
       { path: 'more', component: MoreComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'tax-rates', component: TaxRatesComponent}
+
     ]
   }
 

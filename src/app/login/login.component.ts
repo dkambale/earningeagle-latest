@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  errorMessage: string = '';
   constructor(private loginService:LoginService,  private router: Router) {
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
@@ -23,19 +24,40 @@ export class LoginComponent implements OnInit {
 
   }
 
-  login() {
+  // login() {
 
-    this.loginService.loginPost(this.loginForm.value["username"],this.loginForm.value["password"]).subscribe(res=>{
+  //   this.loginService.loginPost(this.loginForm.value["username"],this.loginForm.value["password"]).subscribe(res=>{
 
-      alert(res);
-      if (res != null ) {
-        localStorage.setItem("user",JSON.stringify(res));
-        this.router.navigate(['/home']);
-      } else {
-        alert('Login failed. Please try again.');
-      }
-    })
+  //     //alert(res);
+  //     if (res != null ) {
+  //       localStorage.setItem("user",JSON.stringify(res));
+  //       this.router.navigate(['/home']);
+  //     } else {
+  //      // alert('Login failed. Please try again.');
+  //     }
+  //   })
     
-   }
+  //  }
+
+
+  login() {
+    this.loginService.loginPost(this.loginForm.value["username"], this.loginForm.value["password"]).subscribe(
+      res => {
+        if (res != null) {
+          localStorage.setItem("user", JSON.stringify(res));
+          this.router.navigate(['/home']);
+       } //else {
+        //   // Display an error message on the screen
+        //   alert('Incorrect password or username. Please try again.');
+        // }
+      },
+      error => {
+        // Handle any HTTP error, e.g., network issues, server errors
+        console.error('Login failed. Please try again.', error);
+        // You can also display an error message on the screen if you wish
+        alert('Incorrect password or username. Please try again.');
+      }
+    );
+  }
 
 }

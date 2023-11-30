@@ -1,0 +1,21 @@
+/* app.component.css */
+
+.login-container {
+    max-width: 300px;
+    margin: auto;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  button {
+    padding: 10px;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  

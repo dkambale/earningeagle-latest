@@ -19,6 +19,8 @@ export class CustomerComponent {
   customerForm: FormGroup;
   showSuccessMessage: boolean = true;
   customers: any[] = [];
+  isDeleteModalVisible: boolean = false;
+
   constructor(private fb: FormBuilder, private customerService: CustomerService) {
 
     this.customerForm = this.fb.group({
@@ -39,7 +41,13 @@ export class CustomerComponent {
     })
   }
 
+  openDeleteConfirmationModal() {
+    this.isDeleteModalVisible = true;
+  }
 
+  closeDeleteConfirmationModal() {
+    this.isDeleteModalVisible = false;
+  }
 
   byALlSearch() {
     this.selectedType = "all";
@@ -101,7 +109,8 @@ export class CustomerComponent {
     if (this.customerForm.valid) {
       this.customerService.register(this.customerForm.value).subscribe(
         res => {
-          alert("customer saved successfully");
+          console.log(res.content);
+          //alert("customer saved successfully");
           this.getAllCustomer();
         }
       )
