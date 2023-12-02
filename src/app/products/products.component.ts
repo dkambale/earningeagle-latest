@@ -1,0 +1,200 @@
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
+import { ProductServiceService } from '../services/product-service.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Product } from '../beans/Product';
+import { Router } from '@angular/router';
+import { TaxRatesService } from '../services/tax-rates.service';
+
+@Component({
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css']
+})
+export class ProductsComponent implements AfterViewInit, OnInit {
+
+
+  searchValue = " ";
+  selectedRow = -1;
+  selectedProduct: Product | undefined;
+  isCollapse = false;
+  selectedType = "";
+  productsForm: FormGroup;
+  nav: string = 'home';
+  user: string;
+  product: string;
+  sales: string;
+  more: string;
+  buy: string;
+  products: any[] = [];
+  taxes:any[]=[];
+  isDeleteModalVisible: boolean = false;
+
+  constructor(private fb: FormBuilder, elementRef: ElementRef, 
+    private productService: ProductServiceService, private router: Router,
+    private taxService:TaxRatesService) {
+    this.user = '';
+    this.product = '';
+    this.sales = '';
+    this.more = '';
+    this.buy = '';
+    this.product = '';
+
+    this.productsForm = this.fb.group({
+      id: null,
+      name: ['', Validators.required],
+      quantity: [0, Validators.required],
+      buyPrice: [0, Validators.required],
+      sellPrice: [0, Validators.required],
+      uniqueNumber: ['', Validators.required],
+      expiredate: [null, Validators.required],
+      stateGST: [0, Validators.required],
+      govtGST: [0, Validators.required],
+      unitId: [0, Validators.required],
+      stockAlert: [true, Validators.required],
+      description: ['', Validators.required],
+      vendorId: [0, Validators.required],
+      gstUnit: [0, Validators.required],
+      tax: [null, Validators.required]
+      });
+
+  }
+  ngAfterViewInit() {
+
+  }
+
+  openDeleteConfirmationModal() {
+    this.isDeleteModalVisible = true;
+  }
+
+  closeDeleteConfirmationModal() {
+    this.isDeleteModalVisible = false;
+  }
+
+  ngOnInit(): void {
+    this.productService.getAllProductWihSearch(this.searchValue).subscribe(res => {
+      console.log(res);
+      this.products = res.content;
+    })
+
+    this.taxService.getAllTaxes().subscribe(res=>{
+        console.log(res);
+        this.taxes=res;
+    })
+
+  }
+
+  selectedTax(event: any ) {
+
+    let tax=this.getTax();
+    let rate:number=tax.rate;
+    this.productsForm.controls['stateGST'].setValue(rate/2);
+    this.productsForm.controls['govtGST'].setValue(rate/2);
+    console.log(event.target.value);
+
+  }
+
+  getTax() {
+    return this.productsForm.value.tax;
+  }
+
+  // byBarcode() {
+  //   this.selectedType = "barcode"
+  //   console.log("search text:", this.searchValue);
+  // }
+
+  byALlSearch() {
+    this.selectedType = "all";
+    console.log("search text:", this.searchValue);
+  }
+
+  selectedproductsRow(index: number, product: Product) {
+
+    // alert("Selected Product:" + index);
+    console.log(product);
+    this.selectedProduct = product;
+    this.selectedRow = index;
+  }
+
+
+  // Delete() {
+  //   if(this.selectedProduct!=undefined){
+  //     this.productService.delete(this.selectedProduct.id).subscribe(res =>{
+  //       // alert("Product Deleted Successfully")
+  //       this.getAllProducts();
+  //     })
+  //   }
+  // }
+
+  Delete() {
+    if (this.selectedProduct != undefined) {
+      this.productService.delete(this.selectedProduct.id).subscribe(res => {
+        // alert("Product Deleted Successfully")
+        this.closeDeleteConfirmationModal();
+        this.getAllProducts();
+      })
+    }
+  }
+
+  collapse(isCollapse: boolean) {
+
+    // alert(isCollapse);
+    this.isCollapse = isCollapse;
+  }
+
+  getClass() {
+
+    return this.isCollapse == false ? 'col-sm-7' : 'col-sm-';
+  }
+  
+  Edit() {
+    this.selectedType = "Edit";
+    console.log("search text:", this.searchValue);
+  }
+  byname() {
+    this.selectedType = "name";
+    console.log("search text:", this.searchValue);
+  }
+  byid() {
+    this.selectedType = "id";
+    console.log("search text:", this.searchValue);
+  }
+  // onsubmit() {
+  //   this.productService.getAllProductWihSearch(this.searchValue).subscribe(
+  //     res => {
+  //       this.products=res.content
+  //     }
+  //   )
+  // }
+
+  getAllProducts() {
+    this.productService.getAllProductWihSearch(this.searchValue).subscribe(
+      res => {
+        this.products = res.content;
+      }
+    )
+
+  }
+  navigateToTaxRates(): void {
+    this.router.navigate(['/home/tax-rates']);
+  }
+
+  getProducts() {
+    this.getAllProducts
+
+  }
+
+  saveProduct() {
+    console.log(this.productsForm.value);
+    if (this.productsForm.valid) {
+      this.productService.register(this.productsForm.value).subscribe(
+        res => {
+          console.log(res.content);
+          // alert("Product saved successfully");
+          this.getAllProducts();
+        }
+      )
+    }
+
+  }
+
+}

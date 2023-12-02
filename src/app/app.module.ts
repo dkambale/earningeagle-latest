@@ -19,7 +19,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { MoreComponent } from './more/more.component';
 import { ProductsComponent } from './products/products.component';
 import { FormsModule } from '@angular/forms';
-import { TaxRatesComponent } from './tax-rates/tax-rates.component';
+import { TaxRatesComponent } from './taxRates/taxRates.component';
 
 @NgModule({
   declarations: [
