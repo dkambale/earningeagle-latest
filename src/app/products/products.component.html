@@ -16,7 +16,8 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title">Confirm Deletion</h5>
-                            <button type="button" class="close" aria-label="Close" (click)="closeDeleteConfirmationModal()">
+                            <button type="button" class="close" aria-label="Close"
+                              (click)="closeDeleteConfirmationModal()">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
@@ -24,7 +25,8 @@
                             Are you sure you want to delete this product?
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" (click)="closeDeleteConfirmationModal()">Cancel</button>
+                            <button type="button" class="btn btn-secondary"
+                              (click)="closeDeleteConfirmationModal()">Cancel</button>
                             <button type="button" class="btn btn-danger" (click)="Delete()">Delete</button>
                           </div>
                         </div>
@@ -71,7 +73,7 @@
               <div class="main-content-inner">
                 <div class="row">
                   <!-- table primary start -->
-                  <div>
+                  <div class="form-container1">
                     <div class="card ">
                       <div class="card-body">
                         <div class="single-table">
@@ -102,8 +104,8 @@
                                     {{prod?.buyPrice}}</td>
                                   <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
                                     {{prod?.sellPrice}}</td>
-                                    <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
-                                      {{prod?.uniqueNumber}}</td>
+                                  <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
+                                    {{prod?.uniqueNumber}}</td>
                               </tbody>
                             </table>
                           </div>
@@ -112,10 +114,22 @@
                     </div>
                   </div>
                   <!-- table primary end -->
+
+<div style="background-color: black;max-height: 250px;">
+
+</div>
+
+
+
                 </div>
+                
               </div>
+
+
+              
             </div>
-            <div class="col-sm-5" *ngIf="isCollapse==false">
+            
+            <div class="col-sm-5 custom-form-container" *ngIf="isCollapse==false">
               <div class="grid-col">
 
                 <div>
@@ -124,70 +138,66 @@
 
                       <div class="card-body">
                         <h4 class="header-title">Add Product</h4>
-                        <form [formGroup]="productsForm" (ngSubmit)="saveProduct()">
-                          <div class="form-group">
-                            <label for="name" class="col-form-label">Name</label>
-                            <input class="form-control" type="text" formControlName="name" id="name">
-                          </div>
-                          <div class="form-group">
-                            <label for="description" class="col-form-label">Description</label>
-                            <input class="form-control" type="text" formControlName="description" id="description">
-                          </div>
-                          <div class="form-group">
-                            <label for="uniqueNumber" class="col-form-label">uniqueNumber</label>
-                            <input class="form-control" type="text" formControlName="uniqueNumber" id="uniqueNumber">
-                          </div>
-                          <div class="form-group">
-                            <label for="quantity" class="col-form-label">quantity</label>
-                            <input class="form-control" type="number" formControlName="quantity" id="quantity">
-                          </div>
-                          <div class="form-group">
-                            <label for="buyPrice" class="col-form-label">buyPrice</label>
-                            <input class="form-control" type="number" formControlName="buyPrice" id="buyPrice">
-                          </div>
-                          <div class="form-group">
-                            <label for="sellPrice" class="col-form-label">sellPrice</label>
-                            <input class="form-control" type="number" formControlName="sellPrice" id="sellPrice">
-                          </div>
-                          <div class="form-group">
-                            <label for="expiredate" class="col-form-label">expiredate</label>
-                            <input class="form-control" type="number" formControlName="expiredate" id="expiredate">
-                          </div>
-                          <div class="form-group">
-                            <label class="col-form-label">Select Tax</label>
-                            <select class="custom-select" (change)="selectedTax($event)" formControlName="tax">
-                              <option >none</option>
-                                <option *ngFor="let tax of taxes"  [ngValue]="tax">{{tax.name}}</option>
-                            </select>
+                        <div class="form-container">
+                          <form [formGroup]="productsForm" (ngSubmit)="saveProduct()">
+                            <div class="form-group">
+                              <label for="name" class="col-form-label">Name</label>
+                              <input class="form-control" type="text" formControlName="name" id="name">
+                            </div>
+                            <div class="form-group">
+                              <label for="description" class="col-form-label">Description</label>
+                              <input class="form-control" type="text" formControlName="description" id="description">
+                            </div>
+                            <div class="form-group">
+                              <label for="uniqueNumber" class="col-form-label">uniqueNumber</label>
+                              <input class="form-control" type="text" formControlName="uniqueNumber" id="uniqueNumber">
+                            </div>
+                            <div class="form-group">
+                              <label for="quantity" class="col-form-label">quantity</label>
+                              <input class="form-control" type="number" formControlName="quantity" id="quantity">
+                            </div>
+                            <div class="form-group">
+                              <label for="buyPrice" class="col-form-label">buyPrice</label>
+                              <input class="form-control" type="number" formControlName="buyPrice" id="buyPrice">
+                            </div>
+                            <div class="form-group">
+                              <label for="sellPrice" class="col-form-label">sellPrice</label>
+                              <input class="form-control" type="number" formControlName="sellPrice" id="sellPrice">
+                            </div>
+                            <div class="form-group">
+                              <label for="expiredate" class="col-form-label">Expire Date</label>
+                              <input class="form-control" type="date" formControlName="expiredate"
+                                id="example-date-input">
+                            </div>
+                            <div class="form-group">
+                              <label class="col-form-label">Select Tax</label>
+                              <select class="custom-select" (change)="selectedTax($event)" formControlName="tax">
+                                <option>none</option>
+                                <option *ngFor="let tax of taxes" [ngValue]="tax">{{tax.name}}</option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="stateGST" class="col-form-label">stateGST</label>
+                              <input class="form-control" type="number" formControlName="stateGST" id="stateGST">
+                            </div>
+                            <div class="form-group">
+                              <label for="govtGST" class="col-form-label">govtGST</label>
+                              <input class="form-control" type="number" formControlName="govtGST" id="govtGST">
+                            </div>
+                            <div class="form-group">
+                              <label for="type" class="col-form-label">type</label>
+                              <input class="form-control" type="text" formControlName="type" id="type">
+                            </div>
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" formControlName="stockAlert"
+                                id="stockAlert">
+                              <label for="stockAlert" class="col-form-label">stockAlert</label>
+                            </div>
+                            <div class="form-group" style="    margin-right: 50%;">
+                              <button type="button" class="btn btn-flat btn-primary mb-3" disabled>Submit</button>
+                            </div>
+                          </form>
                         </div>
-                          <div class="form-group">
-                            <label for="stateGST" class="col-form-label">stateGST</label>
-                            <input class="form-control" type="number" formControlName="stateGST" id="stateGST">
-                          </div>
-                          <div class="form-group">
-                            <label for="govtGST" class="col-form-label">govtGST</label>
-                            <input class="form-control" type="number" formControlName="govtGST" id="govtGST">
-                          </div>
-                          <div class="form-group">
-                            <label for="unitId" class="col-form-label">unitId</label>
-                            <input class="form-control" type="number" formControlName="unitId" id="unitId">
-                          </div>
-                          <div class="form-group">
-                            <label for="stockAlert" class="col-form-label">stockAlert</label>
-                            <input class="form-control" type="number" formControlName="stockAlert" id="stockAlert">
-                          </div>
-                          <div class="form-group">
-                            <label for="vendorId" class="col-form-label">vendorId</label>
-                            <input class="form-control" type="number" formControlName="vendorId" id="vendorId">
-                          </div>
-                          <div class="form-group">
-                            <label for="gstUnit" class="col-form-label">gstUnit</label>
-                            <input class="form-control" type="number" formControlName="gstUnit" id="gstUnit">
-                          </div>
-                          <div class="form-group" style="    margin-right: 50%;">
-                            <button type="submit">Submit</button>
-                          </div>
-                        </form>
                       </div>
                     </div>
                   </div>

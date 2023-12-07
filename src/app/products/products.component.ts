@@ -49,12 +49,10 @@ export class ProductsComponent implements AfterViewInit, OnInit {
       expiredate: [null, Validators.required],
       stateGST: [0, Validators.required],
       govtGST: [0, Validators.required],
-      unitId: [0, Validators.required],
       stockAlert: [true, Validators.required],
       description: ['', Validators.required],
-      vendorId: [0, Validators.required],
-      gstUnit: [0, Validators.required],
-      tax: [null, Validators.required]
+      tax: [null, Validators.required],
+      type: ['', Validators.required]
       });
 
   }
@@ -158,13 +156,13 @@ export class ProductsComponent implements AfterViewInit, OnInit {
     this.selectedType = "id";
     console.log("search text:", this.searchValue);
   }
-  // onsubmit() {
-  //   this.productService.getAllProductWihSearch(this.searchValue).subscribe(
-  //     res => {
-  //       this.products=res.content
-  //     }
-  //   )
-  // }
+  onsubmit() {
+    this.productService.getAllProductWihSearch(this.searchValue).subscribe(
+      res => {
+        this.products=res.content
+      }
+    )
+  }
 
   getAllProducts() {
     this.productService.getAllProductWihSearch(this.searchValue).subscribe(

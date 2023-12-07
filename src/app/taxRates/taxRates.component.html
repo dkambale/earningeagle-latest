@@ -38,6 +38,17 @@
                                         [ngClass]="selectedType=='Edit'? 'selectedCss':'deselectedCss'">
                                         <i class="fa fa-edit" (click)="Edit()"></i>
                                     </div>
+
+                                    <div class="col-lg-2 clearfix">
+                                        <div class="search-box">
+                                          <form (ngSubmit)="gettax()">
+                                            <input type="text" name="search" placeholder=""
+                                              [(ngModel)]="searchValue" required>
+                                            <i class=" ti-search col-lg-11 "></i>
+                                          </form>
+                                        </div>
+                                      </div>
+
                                     <div *ngIf="isCollapse==false" class="fw-icons0 col-lg-1 col-sm-5"
                                         style="margin-left: 35%;"
                                         [ngClass]="selectedType=='id'? 'selectedCss':'deselectedCss'">
@@ -61,16 +72,16 @@
                                                         <table class="table text-center">
                                                             <thead class="text-uppercase bg-primary mb-3">
                                                                 <tr class="text-white">
-                                                                    <th scope="col">ID</th>
-                                                                    <th scope="col">Name</th>
-                                                                    <th scope="col">Rate</th>
-                                                                    <th scope="col">Code</th>
-                                                                    <th scope="col">Fixed</th>
+                                                                    <th scope="col">id</th>
+                                                                    <th scope="col">name</th>
+                                                                    <th scope="col">rate</th>
+                                                                    <th scope="col">code</th>
+                                                                    <th scope="col">fixed</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody *ngIf="taxRates.length>0">
+                                                            <tbody >
                                                                 <tr *ngFor="let tax of taxRates ;let indexOfelement=index;"
-                                                                    (click)="selectedtaxRow(indexOfelement)">
+                                                                    (click)="selectedtaxRow(indexOfelement,tax)">
                                                                     <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
                                                                         {{tax?.id}}</td>
                                                                     <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
@@ -102,7 +113,7 @@
 
                                             <div class="card-body">
                                                 <h4 class="header-title">Add Tax</h4>
-                                                <form>
+                                                <form [formGroup]="taxRatesForm" (ngSbmit)="saveTax()">
                                                     <div class="form-group">
                                                         <label for="name" class="col-form-label">Name</label>
                                                         <input class="form-control" type="text"
@@ -124,7 +135,7 @@
                                                             formControlName="fixed" id="fixed">
                                                     </div>
                                                     <div class="form-group" style="    margin-right: 50%;">
-                                                        <button type="submit">Submit</button>
+                                                        <button type="button" class="btn btn-flat btn-primary mb-3" disabled>Submit</button>
                                                     </div>
                                                 </form>
                                             </div>

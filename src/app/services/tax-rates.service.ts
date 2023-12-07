@@ -21,7 +21,7 @@ private serverUrlForCompay = `${this.environment.apiURL}/company`
 constructor(private http: HttpClient) {
 }
 getAll(searchText: string) {
-  let url=`${this.environment.apiURL}/getall${searchText}`;
+  let url=`${this.environment.apiURL}/taxRates/getall${searchText}`;
         console.log(url);
         return this.http.get<any>(url);
 }
@@ -35,6 +35,11 @@ getAllTaxes() {
 register(prodcut: taxRates) {
   console.log("calling service")
   return this.http.post<any>(this.serverUrl, prodcut);
+}
+
+
+delete(id: number) {
+  return this.http.delete(this.serverBaseUrl + '/delete/' + id);
 }
 
 }

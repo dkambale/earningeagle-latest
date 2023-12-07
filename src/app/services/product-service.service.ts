@@ -65,4 +65,9 @@ export class ProductServiceService {
         return this.http.get<Company[]>(this.serverUrlForCompay);
     }
 
+
+    searchProducts(searchText: string){
+        
+    }
+
 }

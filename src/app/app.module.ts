@@ -13,13 +13,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
-import { ProductComponent } from './product/product.component';
+
 import { SalesComponent } from './sales/sales.component';
 import { CustomerComponent } from './customer/customer.component';
 import { MoreComponent } from './more/more.component';
 import { ProductsComponent } from './products/products.component';
 import { FormsModule } from '@angular/forms';
 import { TaxRatesComponent } from './taxRates/taxRates.component';
+import { PaymentComponent } from './payment/payment.component';
+import { CalculatorComponent } from './calculator/calculator.component';
+import { ProductComponent } from './product/product.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CustomerlistComponent } from './customerlist/customerlist.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,11 @@ import { TaxRatesComponent } from './taxRates/taxRates.component';
     CustomerComponent,
     MoreComponent,
     ProductsComponent,
-    TaxRatesComponent
+    TaxRatesComponent,
+    PaymentComponent,
+    
+    CalculatorComponent,
+         CustomerlistComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +53,14 @@ import { TaxRatesComponent } from './taxRates/taxRates.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    BrowserModule,
+    FormsModule,
+    MatDialogModule
     
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

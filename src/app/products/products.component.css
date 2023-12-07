@@ -168,3 +168,18 @@
 .modal.show {
   display: block;
 }
+
+.form-container{
+
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.form-container1{
+
+  max-height: 250px;
+  max-width: 900px;
+  overflow-y: auto;
+  padding: 10px;
+}
