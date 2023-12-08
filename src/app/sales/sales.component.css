@@ -154,3 +154,64 @@
   
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+.selectedCss{
+  background-color: rgb(172, 172, 255); 
+}
+
+.deselectedCss {
+  
+  color: 
+  rgb(0, 0, 0);
+}
+
+
+.container-1{
+  height: 100%;
+  width:100%;
+}
+
+
+
+.form-container {
+max-width: 600px; /* Adjust the maximum width as needed */
+margin: 0 auto;   /* Center the form on the screen */
+}
+
+.card {
+width: 100%;       /* Ensure the card takes full width of its container */
+}
+
+.form-group {
+margin-right: 50%;
+}
+
+.modal {
+display: none;
+position: fixed;
+z-index: 1000;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+overflow: hidden;
+outline: 0;
+}
+
+.modal.show {
+display: block;
+}
+
+
+

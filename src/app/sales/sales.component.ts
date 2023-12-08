@@ -1,31 +1,65 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductServiceService } from '../services/product-service.service';
 import { Product } from '../beans/Product';
 import { MatDialog } from '@angular/material/dialog';
 import { CalculatorComponent } from '../calculator/calculator.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sales',
   templateUrl: './sales.component.html',
   styleUrls: ['./sales.component.css'],
 })
-export class SalesComponent implements OnInit {
+export class SalesComponent implements OnInit{
   showCalculator: boolean = false;
   calculatorInput: string = '';
 
   searchValue = " ";
 
-  selectedType="name";
+  selectedType = "name";
 
-  products:any[]=[];
+  products: any[] = [];
   selectedProduct: Product | undefined;
   selectedRow = -1;
+  isDeleteModalVisible: boolean = false;
+  totalBefore: number = 0;
+  totalTax: number = 0;
+  totalDiscount: number = 0;
+  finalTotal: number = 0;
 
-  constructor(private productService: ProductServiceService,private dialog: MatDialog,private router: Router)   {
+
+  constructor(private productService: ProductServiceService, private dialog: MatDialog, private router: Router) {
 
   }
   ngOnInit(): void {
+  }
+
+  
+
+  openDeleteConfirmationModal() {
+    this.isDeleteModalVisible = true;
+  }
+
+  closeDeleteConfirmationModal() {
+    this.isDeleteModalVisible = false;
+  }
+
+  Delete() {
+    if (this.selectedProduct != undefined) {
+      this.productService.delete(this.selectedProduct.id).subscribe(res => {
+        // alert("Product Deleted Successfully")
+        this.closeDeleteConfirmationModal();
+        this.getAllProducts();
+      })
+    }
+  }
+  getAllProducts() {
+    this.productService.getAllProductWihSearch(this.searchValue).subscribe(
+      res => {
+        this.products = res.content;
+      }
+    )
+
   }
 
   selectedproductsRow(index: number, product: Product) {
@@ -38,38 +72,38 @@ export class SalesComponent implements OnInit {
 
   openCalculator(): void {
     const dialogRef = this.dialog.open(CalculatorComponent, {
-      width: '400px', 
-      disableClose: true, 
+      width: '400px',
+      disableClose: true,
     });
-  
-    
+
+
     dialogRef.afterClosed().subscribe(result => {
 
       console.log('Dialog closed with result:', result);
     });
   }
 
-  deleteItem(id:number) {
+  deleteItem(id: number) {
     alert("delete item with id");
-    this.products=this.products.splice(id, 1);
+    this.products = this.products.splice(id, 1);
   }
 
   byBarcode() {
-    this.selectedType="barcode"
+    this.selectedType = "barcode"
     console.log("search text:", this.searchValue);
   }
 
   byALlSearch() {
-    this.selectedType="all";
+    this.selectedType = "all";
     console.log("search text:", this.searchValue);
   }
 
-  byname(){
-    this.selectedType="name";
+  byname() {
+    this.selectedType = "name";
     console.log("search text:", this.searchValue);
   }
-  byid(){
-    this.selectedType="id";
+  byid() {
+    this.selectedType = "id";
     console.log("search text:", this.searchValue);
   }
 
@@ -77,27 +111,58 @@ export class SalesComponent implements OnInit {
     this.router.navigate(['/home/products']);
   }
 
-  onsubmit(){
+
+
+  onsubmit() {
     this.productService.getAllProductWihSearch(this.searchValue).subscribe(
-      res=>{
-        console.log(res.content); 
-        if(res.content.length>0) {
+      res => {
+        console.log(res.content);
+        if (res.content.length > 0) {
 
-          res.content.map((p: any)=> {
+          res.content.forEach((p: any) => {
 
-             let productPayload= {
-                "name":p["name"],
-                "quantity":1,
-                "price":p["price"],
-                "total":p["price"]
+            const existingProduct = this.products.find(product => product.name === p.name);
+
+            if (existingProduct) {
+
+              existingProduct.quantity++;
+              existingProduct.total = existingProduct.quantity * existingProduct.sellPrice;
+
+            }
+            else {
+
+              const productPayload = {
+                "name": p["name"],
+                "quantity": 1,
+                "sellPrice": p["sellPrice"],
+                "total": p["sellPrice"],
+                "subTotal": p["subTotal  "]
               }
 
               this.products.push(productPayload);
+            }
           });
         }
+        this.finalBill();
       }
     )
-    //http://localhost:9090/productsearch?search=
   }
 
+  finalBill() {
+
+    this.clearBill();
+    this.products.forEach(product => {
+
+      this.totalBefore = this.totalBefore + product.total
+      this.totalTax = this.totalTax + 0;
+      this.totalDiscount = 0
+      this.finalTotal = this.totalBefore + this.totalTax - this.totalDiscount;
+    })
+  }
+  clearBill() {
+    this.totalBefore = 0
+      this.totalTax = 0
+      this.totalDiscount = 0
+      this.finalTotal = 0
+  }
 }

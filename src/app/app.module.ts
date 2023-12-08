@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
-import { RouterModule } from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { UserComponent } from './user/user.component';
 
 import { SalesComponent } from './sales/sales.component';
@@ -25,6 +25,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import { ProductComponent } from './product/product.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CustomerlistComponent } from './customerlist/customerlist.component';
+
 
 @NgModule({
   declarations: [

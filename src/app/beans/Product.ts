@@ -13,6 +13,7 @@ export class Product {
     public govtGST:number;
     public unitId:number;
     public stockAlert:boolean;
+    public isTaxIncluded: boolean;
     public description:string;
     public vendorId:number;
     public gstUnit:number;
@@ -29,6 +30,7 @@ export class Product {
         this.govtGST=0,
         this.unitId=0,
         this.stockAlert=false,
+        this.isTaxIncluded=false,
         this.description="",
         this.vendorId=0,
         this.gstUnit=0,

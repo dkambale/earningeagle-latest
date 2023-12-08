@@ -42,14 +42,15 @@ export class ProductsComponent implements AfterViewInit, OnInit {
     this.productsForm = this.fb.group({
       id: null,
       name: ['', Validators.required],
-      quantity: [0, Validators.required],
-      buyPrice: [0, Validators.required],
-      sellPrice: [0, Validators.required],
+      quantity: [ ,Validators.required],
+      buyPrice: [ ,Validators.required],
+      sellPrice: [ ,Validators.required],
       uniqueNumber: ['', Validators.required],
       expiredate: [null, Validators.required],
-      stateGST: [0, Validators.required],
-      govtGST: [0, Validators.required],
-      stockAlert: [true, Validators.required],
+      stateGST: [ ,Validators.required],
+      govtGST: [ ,Validators.required],
+      stockAlert: [false, Validators.required],
+      isTaxIncluded: [false, Validators.required],
       description: ['', Validators.required],
       tax: [null, Validators.required],
       type: ['', Validators.required]
@@ -135,7 +136,7 @@ export class ProductsComponent implements AfterViewInit, OnInit {
 
   collapse(isCollapse: boolean) {
 
-    // alert(isCollapse);
+    // alert(isCollapse);S
     this.isCollapse = isCollapse;
   }
 
