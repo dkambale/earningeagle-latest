@@ -55,7 +55,7 @@ export class ProductServiceService {
     }
 
     update(product: Product) {
-        return this.http.put(this.serverUrl + product.id, product);
+        return this.http.put<any>(this.serverUrl + product.id, product);
     }
 
     delete(id: number) {

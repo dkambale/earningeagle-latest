@@ -7,7 +7,6 @@
             <div [ngClass]="isCollapse==false ? 'col-sm-7':'col-sm-12'">
               <div class=" grid-col">
                 <div class="ml-1" style="display: flex;">
-
                   <div class="fw-icons0 col-lg-1 col-sm-5"
                     [ngClass]="selectedType=='Delete'? 'selectedCss':'deselectedCss'">
                     <i class="fa fa-trash-o" (click)="openDeleteConfirmationModal()"></i>
@@ -35,7 +34,7 @@
                   </div>
                   <div class="fw-icons0 col-lg-1 col-sm-5"
                     [ngClass]="selectedType=='Edit'? 'selectedCss':'deselectedCss'">
-                    <i class="fa fa-edit" (click)="Edit()"></i>
+                    <i class="fa fa-edit" (click)="openEditModal()"></i>
                   </div>
                   <div class="fw-icons0 col-lg-1 col-sm-5"
                     [ngClass]="selectedType=='all'? 'selectedCss':'deselectedCss'">
@@ -73,7 +72,7 @@
               <div class="main-content-inner">
                 <div class="row">
                   <!-- table primary start -->
-                  <div class="form-container1">
+                  <div class="form-container2">
                     <div class="card ">
                       <div class="card-body">
                         <div class="single-table">
@@ -115,20 +114,20 @@
                   </div>
                   <!-- table primary end -->
 
-<div style="background-color: black;max-height: 250px;">
+                  <div style="background-color: black;max-height: 250px;">
 
-</div>
+                  </div>
 
 
 
                 </div>
-                
+
               </div>
 
 
-              
+
             </div>
-            
+
             <div class="col-sm-5 custom-form-container" *ngIf="isCollapse==false">
               <div class="grid-col">
 
@@ -182,7 +181,7 @@
                             </div>
                             <div class="form-group">
                               <label for="govtGST" class="col-form-label">govtGST</label>
-                              govtGST<input class="form-control" type="number" formControlName="govtGST" id="govtGST">
+                              <input class="form-control" type="number" formControlName="govtGST" id="govtGST">
                             </div>
                             <div class="form-group">
                               <label for="type" class="col-form-label">type</label>
@@ -199,7 +198,8 @@
                               <label for="isTaxIncluded" class="col-form-label">Is TaxIncluded</label>
                             </div>
                             <div class="form-group" style="    margin-right: 50%;">
-                              <button type="button" class="btn btn-flat btn-primary mb-3" disabled>Submit</button>
+                              <button type="button" class="btn btn-flat btn-primary mb-3"
+                                (click)="saveProduct()">Submit</button>
                             </div>
                           </form>
                         </div>

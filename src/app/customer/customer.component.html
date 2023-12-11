@@ -5,10 +5,10 @@
         <div class="card-body">
           <div class="row no-gutters">
             <div [ngClass]="isCollapse==false ? 'col-sm-7':'col-sm-12'">
-              <div class="grid-col">
+              <div class=" grid-col">
                 <div class="ml-1" style="display: flex;">
                   <div class="fw-icons0 col-lg-1 col-sm-5"
-                    [ngClass]="selectedType=='Delete'? 'selectedCss':'deselectedCss'">
+                  [ngClass]="selectedType=='id'? 'selectedCss':'deselectedCss'"  >
                     <i class="fa fa-trash-o" (click)="openDeleteConfirmationModal()"></i>
                     <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isDeleteModalVisible}">
                       <div class="modal-dialog" role="document">
@@ -57,8 +57,7 @@
                       </form>
                     </div>
                   </div>
-                  <div *ngIf="isCollapse==false" class="fw-icons0 col-lg-1 col-sm-5" style="margin-left: 35%;"
-                    [ngClass]="selectedType=='id'? 'selectedCss':'deselectedCss'">
+                  <div *ngIf="isCollapse==false" class="fw-icons0 col-lg-1 col-sm-5" style="margin-left: 35%;">
                     <i class="fa fa-arrow-circle-right" (click)="collapse(true)"></i>
                   </div>
                   <div *ngIf="isCollapse!=false" class="fw-icons0 col-lg-1 col-sm-5" style="margin-left: 35%;"
@@ -147,7 +146,7 @@
                             <input class="form-control" type="text" formControlName="type" id="type">
                           </div>
                           <div class="form-group" style="    margin-right: 50%;">
-                            <button type="button" class="btn btn-flat btn-primary mb-3" disabled>Submit</button>
+                            <button type="button" class="btn btn-flat btn-primary mb-3"(click)="savecustomer()" >Submit</button>
                         </div>
                         </form>
                         </div>

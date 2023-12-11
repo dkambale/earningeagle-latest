@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProductServiceService } from '../services/product-service.service';
 import { CustomerService } from '../services/customer.service';
 import { Customer } from '../beans/customer';
 
@@ -56,7 +55,7 @@ export class CustomerComponent {
 
   selectedCustomerRow(index: number, customer:Customer) {
 
-    alert("Selected Customer:" + index);
+   // alert("Selected Customer:" + index);
     console.log(customer);
     this.selectedRow=index;
   }
@@ -64,7 +63,8 @@ export class CustomerComponent {
 
     if (this.selectedRow > 0) {
       this.customerService.delete(this.selectedRow).subscribe(res => {
-        alert("Customer deleted Successfully");
+        this.closeDeleteConfirmationModal();
+        this.getAllCustomer();
       })
     }
   }

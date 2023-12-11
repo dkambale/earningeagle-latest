@@ -49,9 +49,9 @@ getById(id: number) {
     return this.http.get<Customer>(this.serverUrl + "/" + id);
 }
 
-register(prodcut: Customer) {
+register(customer: Customer) {
     console.log("calling service")
-    return this.http.post<any>(this.serverUrl, prodcut);
+    return this.http.post<any>(this.serverUrl, customer);
 }
 
 update(customer: Customer) {
