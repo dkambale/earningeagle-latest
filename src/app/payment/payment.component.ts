@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from '../beans/Product';
 
 @Component({
   selector: 'app-payment',
@@ -7,4 +8,21 @@ import { Component } from '@angular/core';
 })
 export class PaymentComponent {
 
+  products: any[] = [];
+  selectedProduct: Product | undefined;
+  selectedRow = -1;
+
+
+
+
+  selectedproductsRow(index: number, product: Product) {
+
+
+    console.log(product);
+    this.selectedProduct = product;
+    this.selectedRow = index;
+  }
+ 
+
+  
 }

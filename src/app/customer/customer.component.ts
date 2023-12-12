@@ -9,9 +9,9 @@ import { Customer } from '../beans/customer';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent {
-
+  selectedCustomer: Customer | undefined;
+  isEditModalVisible: boolean = false;
   searchValue = " ";
-
   selectedRow = -1;
   selectedType = "";
   isCollapse=false;
@@ -57,10 +57,11 @@ export class CustomerComponent {
 
    // alert("Selected Customer:" + index);
     console.log(customer);
+    this.selectedCustomer = customer;  
     this.selectedRow=index;
   }
   Delete() {
-
+  
     if (this.selectedRow > 0) {
       this.customerService.delete(this.selectedRow).subscribe(res => {
         this.closeDeleteConfirmationModal();
@@ -118,6 +119,37 @@ export class CustomerComponent {
   }
 
 
+  openEditModal() {
+    this.isEditModalVisible = true;
 
+    if (this.selectedCustomer) {
+      this.customerForm.patchValue({
+        id: this.selectedCustomer.id,
+        name: this.selectedCustomer.name,
+        quantity: this.selectedCustomer.contactNumber,
+        buyPrice: this.selectedCustomer.emailId,
+        sellPrice: this.selectedCustomer.address,
+        uniqueNumber: this.selectedCustomer.dateOfBirth,
+        expiredate: this.selectedCustomer.type
+      });
+    }
+  }
+
+  closeEditModal() {
+    this.isEditModalVisible = false;
+  }
+
+  editProduct() {
+
+    if (this.customerForm.valid) {
+      this.customerService.update(this.customerForm.value).subscribe(
+        (res: any) => {
+          console.log(res);
+          this.closeEditModal();
+          this.getAllCustomer();
+        }
+      );
+    }
+  }
 
 }

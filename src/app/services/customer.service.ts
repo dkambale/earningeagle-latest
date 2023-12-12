@@ -55,7 +55,7 @@ register(customer: Customer) {
 }
 
 update(customer: Customer) {
-    return this.http.put(this.serverUrl + customer.id, customer);
+    return this.http.put<any>(this.serverUrl + customer.id, customer);
 }
 
 delete(id: number) {

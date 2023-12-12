@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductServiceService } from '../services/product-service.service';
 import { Product } from '../beans/Product';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CalculatorComponent } from '../calculator/calculator.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CustomerComponent } from '../customer/customer.component';
+import { CustomerlistComponent } from '../customerlist/customerlist.component';
 
 @Component({
   selector: 'app-sales',
@@ -17,7 +19,7 @@ export class SalesComponent implements OnInit{
   searchValue = " ";
 
   selectedType = "name";
-
+  showConfirmationDialog: boolean = false;
   products: any[] = [];
   selectedProduct: Product | undefined;
   selectedRow = -1;
@@ -26,11 +28,14 @@ export class SalesComponent implements OnInit{
   totalTax: number = 0;
   totalDiscount: number = 0;
   finalTotal: number = 0;
+  dialogConfig = new MatDialogConfig();
 
 
-  constructor(private productService: ProductServiceService, private dialog: MatDialog, private router: Router) {
+  constructor(private productService: ProductServiceService,
+     private dialog: MatDialog , private router: Router) {
 
   }
+
   ngOnInit(): void {
   }
 
@@ -70,7 +75,7 @@ export class SalesComponent implements OnInit{
     this.selectedRow = index;
   }
 
-  openCalculator(): void {
+  openCalculator1(): void {
     const dialogRef = this.dialog.open(CalculatorComponent, {
       width: '400px',
       disableClose: true,
@@ -82,6 +87,30 @@ export class SalesComponent implements OnInit{
       console.log('Dialog closed with result:', result);
     });
   }
+
+  
+  openCalculator(): void {
+    const dialogRef = this.dialog.open(CalculatorComponent, {
+      width: '400px',
+      disableClose: true,
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      console.log('Dialog closed with result:', result);
+      this.totalDiscount=result;
+    });
+  }
+  openCustomer(): void {
+    const dialogRef = this.dialog.open(CustomerlistComponent, {
+      width: '900px',
+      height:'400px',
+      disableClose: true,
+    });
+  }
+
+
 
   deleteItem(id: number) {
     alert("delete item with id");
@@ -132,6 +161,7 @@ export class SalesComponent implements OnInit{
             else {
 
               const productPayload = {
+               "id":p['id'],
                 "name": p["name"],
                 "quantity": 1,
                 "sellPrice": p["sellPrice"],
@@ -165,4 +195,22 @@ export class SalesComponent implements OnInit{
       this.totalDiscount = 0
       this.finalTotal = 0
   }
+
+  showDeleteConfirmation() {
+    const userConfirmed = confirm('Are you sure you want to delete?');
+
+    if (userConfirmed) {
+      this.refreshComponent();
+    }
+  }
+
+  
+  refreshComponent() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
+  }
+
+
 }

@@ -1,36 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.css']
 })
+
 export class CalculatorComponent {
+
+
+  private firstValue: number | null = 0;
+  
+  constructor(
+    private dialogRef: MatDialogRef<CalculatorComponent>, @Inject(MAT_DIALOG_DATA) data: any
+  ) {
+    
+  }
+
+  save() {
+    this.dialogRef.close(this.storeFirstValue);
+  }
+
+
+  close() {
+    this.dialogRef.close( this.displayValue);
+  }
+
   displayValue: string = '';
-  private firstValue: number | null = 0; // Initialize to 0 or any other default value
+  
 
   storeFirstValue(): void {
-    // Store the current displayValue as the firstValue
     const currentValue = parseFloat(this.displayValue);
-    
-    // If the value is a number, store it as the firstValue
     if (!isNaN(currentValue)) {
       this.firstValue = currentValue;
-      this.displayValue = ''; // Clear the display for the next input
+      this.displayValue = '';
     }
   }
 
   calculatePercentage(): void {
-    // Convert the current displayValue to a number and calculate the percentage
     const secondValue = parseFloat(this.displayValue);
-    
-    // If the value is a number and firstValue is set, calculate its percentage
     if (!isNaN(secondValue) && this.firstValue !== null) {
       this.displayValue = ((this.firstValue * secondValue) / 100).toString();
-      this.firstValue = 0; // Reset firstValue for the next input
+      this.firstValue = 0;
     }
   }
-
 
   appendToDisplay(value: string): void {
     this.displayValue += value;
@@ -48,16 +62,13 @@ export class CalculatorComponent {
     }
   }
 
-
   eraseLast(): void {
-    // Remove the last character from the displayValue
+
     this.displayValue = this.displayValue.slice(0, -1);
   }
 
   onKeyPress(event: KeyboardEvent): void {
     const key = event.key;
-
-   
     switch (key) {
       case '1':
       case '2':
@@ -73,10 +84,8 @@ export class CalculatorComponent {
       case '*':
       case '0':
       case '/':
-        case '(':
-        case ')':
-      
-        
+      case '(':
+      case ')':
         this.appendToDisplay(key);
         break;
       case 'c':
@@ -89,16 +98,16 @@ export class CalculatorComponent {
       case 'Backspace':
         this.eraseLast();
         break;
-        case '%':
+      case '%':
         this.storeFirstValue();
         break;
-      case 'Enter':
-        this.calculatePercentage();
+        case 'Enter':
+          if (this.firstValue !== null) {
+            this.calculatePercentage();
+          } else {
+            this.calculateResult();
+          }
         break;
     }
   }
-
-
-
-  
 }

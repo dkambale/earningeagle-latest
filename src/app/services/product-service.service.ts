@@ -52,7 +52,7 @@ export class ProductServiceService {
     register(prodcut: Product) {
         console.log("calling service")
         return this.http.post<any>(this.serverUrl, prodcut);
-    }
+    }  
 
     update(product: Product) {
         return this.http.put<any>(this.serverUrl + product.id, product);

@@ -130,17 +130,22 @@
         <div class="col-sm-5 form-container ">
           <div class="grid-col">
 
-            <button type="button" class="btn btn-flat btn-primary mb-3" disabled><i
-                class="fa fa-trash-o"></i>Delete</button>
-            <button type="button" class="btn btn-flat btn-success mb-3" disabled><i
+            <button type="button" class="btn btn-flat btn-primary mb-3" (click)="showDeleteConfirmation()">
+              <i class="fa fa-trash-o"></i>Delete
+            </button>
+            <button type="button" class="btn btn-flat btn-success mb-3" ><i
                 class=" ti-search col-lg-0 "></i>Search</button>
-            <button type="button" class="btn btn-flat btn-danger mb-3" disabled><i
+            <button type="button" class="btn btn-flat btn-danger mb-3" ><i
                 class="fa fa-trash-o"></i>Quantity</button>
-            <button type="button" class="btn btn-flat btn-warning mb-3" disabled><i class="fa fa-cart-plus"></i>New
+            <button type="button" class="btn btn-flat btn-warning mb-3" ><i class="fa fa-cart-plus"></i>New
               Sell</button>
             <div class="row">
               <div class="col-md-4">
-                <div class="grid-col">Cash</div>
+                <button type="button" class=" grid-col mb-3" >
+                 
+                    <a routerLink="/home/payment">Cash </a>
+              
+                </button>
               </div>
               <div class="col-md-4">
                 <div class="grid-col">Credt Card</div>
@@ -164,9 +169,10 @@
             <div class="row">
               <div class="col-lg-3 col- md-6" (click)="openCalculator()">
 
-                <button type="button" class=" grid-col mb-3" disabled>
+                <button type="button" class=" grid-col mb-3" >
                   <li>
-                    <a routerLink="/home/calculator">Disscount </a>
+                    <!-- <a routerLink="/home/calculator">Disscount </a> -->
+                    Disscount
                   </li>
                 </button>
 
@@ -174,7 +180,7 @@
               <div class="col-lg-3 col-md-6">
                 <div class="grid-col"><i class="fa fa-commenting"></i>Comment</div>
               </div>
-              <div class="col-lg-3 col-md-6">
+              <div class="col-lg-3 col-md-6"   (click)="openCustomer()" >
                 <div class="grid-col"><i class="fa fa-male"></i>Customer</div>
               </div>
               <div class="col-lg-3 col-md-6">

@@ -65,10 +65,8 @@
                     [ngClass]="selectedType=='id'? 'selectedCss':'deselectedCss'">
                     <i class="fa fa-arrow-circle-left" (click)="collapse(false)"></i>
                   </div>
-
                 </div>
               </div>
-
               <div class="main-content-inner">
                 <div class="row">
                   <!-- table primary start -->
@@ -86,13 +84,11 @@
                                   <th scope="col">buyPrice</th>
                                   <th scope="col">sellPrice</th>
                                   <th scope="col">UniqueNumber</th>
-
                                 </tr>
                               </thead>
                               <tbody *ngIf="products.length>0">
                                 <tr *ngFor="let prod of products ; let indexOfelement=index"
                                   (click)="selectedproductsRow(indexOfelement,prod)">
-
                                   <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
                                     {{prod?.id}}</td>
                                   <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
@@ -105,6 +101,7 @@
                                     {{prod?.sellPrice}}</td>
                                   <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
                                     {{prod?.uniqueNumber}}</td>
+                                    </tr>
                               </tbody>
                             </table>
                           </div>

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
@@ -40,9 +40,8 @@ import { CustomerlistComponent } from './customerlist/customerlist.component';
     ProductsComponent,
     TaxRatesComponent,
     PaymentComponent,
-    
     CalculatorComponent,
-         CustomerlistComponent
+    CustomerlistComponent
   ],
   imports: [
     BrowserModule,
@@ -58,10 +57,10 @@ import { CustomerlistComponent } from './customerlist/customerlist.component';
     BrowserModule,
     FormsModule,
     MatDialogModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
-  
+
 })
 export class AppModule { }
