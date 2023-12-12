@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from '../services/customer.service';
 import { Customer } from '../beans/customer';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-customerlist',
@@ -17,7 +18,8 @@ export class CustomerlistComponent {
   showSuccessMessage: boolean = true;
   customers: any[] = [];
   isDeleteModalVisible: boolean = false;
-  constructor(private fb: FormBuilder, private customerService: CustomerService) {
+  selectedCustomer:Customer | undefined ;
+  constructor(private fb: FormBuilder, private customerService: CustomerService, private dialogRef: MatDialogRef<CustomerlistComponent>) {
     this.customerForm = this.fb.group({
       id: [],
       name: ['', Validators.required],
@@ -25,6 +27,7 @@ export class CustomerlistComponent {
       emailId: ['', Validators.required],
       address: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
+      select: ['', Validators.required],
       type: ['', Validators.required]
     });
   }
@@ -34,16 +37,18 @@ export class CustomerlistComponent {
       this.customers = res.content;
     })
   }
+
   byALlSearch() {
     this.selectedType = "all";
     console.log("search text:", this.searchValue);
   }
-  selectedCustomerRow(index: number, customer: Customer) {
 
-    alert("Selected Customer:" + index);
+  selectedCustomerRow(index: number, customer: Customer) {
     console.log(customer);
     this.selectedRow = index;
+    this.selectedCustomer=customer;
   }
+
   getClass() {
 
     return this.isCollapse == false ? 'col-sm-7' : 'col-sm-';
@@ -59,4 +64,11 @@ export class CustomerlistComponent {
     this.getAllCustomer();
   }
 
+  close(index: number, customer: Customer) {
+    this.dialogRef.close(customer);
+  }
+
 }
+
+
+

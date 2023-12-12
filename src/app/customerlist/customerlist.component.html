@@ -1,69 +1,71 @@
- <div class="container-1">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="row no-gutters">
-              <div class="col-sm-12">
-                <div class="grid-col">
-                  <div class="ml-1" style="display: flex;">
-                 
-                    <div class="col-lg-2 clearfix">
-                      <div class="search-box">
-                        <form (ngSubmit)="getCustomer()">
-                          <input type="text" name="search" placeholder="    Search Products By Name, Code or Bar code "
-                            [(ngModel)]="searchValue" required>
-                          <i class=" ti-search col-lg-11 "></i>
-                        </form>
-                      </div>
-                    </div>
+<div class="container-1">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row no-gutters">
+          <div class="col-sm-12">
+            <div class="grid-col">
+              <div class="ml-1" style="display: flex;">
+
+                <div class="col-lg-2 clearfix">
+                  <div class="search-box">
+                    <form (ngSubmit)="getCustomer()">
+                      <input type="text" name="search" placeholder="    Search Products By Name, Code or Bar code "
+                        [(ngModel)]="searchValue" required>
+                      <i class=" ti-search col-lg-11 "></i>
+                    </form>
                   </div>
                 </div>
-                <div class="main-content-inner">
-                  <div class="row">
-                    <div>
-                      <div class="card ">
-                        <div class="card-body">
-                          <div class="single-table">
-                            <div class="table-responsive">
-                              <table class="table text-center">
-                                <thead class="text-uppercase bg-primary mb-3">
-                                  <tr class="text-white">
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Contact Number</th>
-                                    <th scope="col">EmailId</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Select</th>
-                                  </tr>
-                                </thead>
-                                <tbody *ngIf="customers.length>0">
-                                  <tr *ngFor="let cust of customers ;let indexOfelement=index;"
-                                    (click)="selectedCustomerRow(indexOfelement,cust)">
-                                    <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
-                                      {{cust?.id}}</td>
-                                    <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
-                                      {{cust?.name}}</td>
-                                    <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
-                                      {{cust?.contactNumber}}</td>
-                                    <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
-                                      {{cust?.emailId}}</td>
-                                    <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
-                                      {{cust?.address}}</td>
-                                    <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
-                                      {{cust?.type}}</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
+              </div>
+            </div>
+            <div class="main-content-inner">
+              <div class="row">
+                <div>
+                  <div class="card ">
+                    <div class="card-body">
+                      <div class="single-table">
+                        <div class="table-responsive">
+                          <table class="table text-center">
+                            <thead class="text-uppercase bg-primary mb-3">
+                              <tr class="text-white">
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Contact Number</th>
+                                <th scope="col">EmailId</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Select</th>
+                              </tr>
+                            </thead>
+                            <tbody *ngIf="customers.length>0">
+                              <tr *ngFor="let cust of customers ;let indexOfelement=index;"
+                                (click)="selectedCustomerRow(indexOfelement,cust)">
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
+                                  {{cust?.id}}</td>
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
+                                  {{cust?.name}}</td>
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
+                                  {{cust?.contactNumber}}</td>
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
+                                  {{cust?.emailId}}</td>
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
+                                  {{cust?.address}}</td>
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
+                                  <button  (click)="close(indexOfelement,cust)" >Select</button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div><button type="button" class="btn btn-flat btn-primary mb-3" style="float: right;">Close</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+</div>

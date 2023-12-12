@@ -27,6 +27,7 @@ export class SalesComponent implements OnInit{
   totalBefore: number = 0;
   totalTax: number = 0;
   totalDiscount: number = 0;
+  selectedcustomer=undefined;
   finalTotal: number = 0;
   dialogConfig = new MatDialogConfig();
 
@@ -107,6 +108,12 @@ export class SalesComponent implements OnInit{
       width: '900px',
       height:'400px',
       disableClose: true,
+    });
+
+    dialogRef.afterClosed().subscribe(customer => {
+
+      console.log('Selected Customer:', customer);
+      this.selectedcustomer=customer;
     });
   }
 
