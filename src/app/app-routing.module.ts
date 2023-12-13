@@ -14,6 +14,7 @@ import { TaxRatesComponent } from './taxRates/taxRates.component';
 import { PaymentComponent } from './payment/payment.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { CustomerlistComponent } from './customerlist/customerlist.component';
+import { SalesHistoryComponent } from './sales-history/sales-history.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -31,8 +32,8 @@ const routes: Routes = [
       { path: 'tax-rates', component: TaxRatesComponent},
       { path: 'payment', component: PaymentComponent},
       // { path: 'calculator', component: CalculatorComponent},
-      { path: 'customerlist', component: CustomerlistComponent}
-
+      { path: 'customerlist', component: CustomerlistComponent},
+      { path: 'salesHistory', component: SalesHistoryComponent}
     ]
   }
 

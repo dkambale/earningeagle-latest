@@ -6,6 +6,7 @@ import { CalculatorComponent } from '../calculator/calculator.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerComponent } from '../customer/customer.component';
 import { CustomerlistComponent } from '../customerlist/customerlist.component';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-sales',
@@ -116,7 +117,7 @@ export class SalesComponent implements OnInit{
       this.selectedcustomer=customer;
     });
   }
-
+ 
 
 
   deleteItem(id: number) {
