@@ -1,110 +1,309 @@
-<div >
-<!-- <div class="col-sm-4" style="width: auto;">
-    <div class="grid-col">
-        <input type="number" placeholder="Document number">
-
-        <div class="dropdown col-lg-6 col-md-4 col-sm-6">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+<div>
+    <div class=" grid-col " style="height: 100px;margin-bottom: 0.5px;">
+        <div class="col-lg-2 clearfix mb-2">
+            <input type="text" name="search" placeholder="Document number">
+        </div>
+        <div class="fw-icons0 col-lg-1 col-sm-5 grid-col " style="float: left;width: 320px;margin-bottom: 0.5px;">
+            <select name="cars" id="cars" style="max-width: 130px;">
+                <option value="volvo">POS</option>
+                <option value="saab">All registers</option>
+            </select>
+        </div>
+        <div class="fw-icons0 col-lg-1 col-sm-5 grid-col" style="float: left; height: 41.5px;margin-bottom: 0.5px;">
+            <i class="fa fa-refresh">-Refresh</i>
+        </div>
+        <div class="fw-icons0 col-lg-1 col-sm-5 grid-col " style="float: left; height: 41.5px;margin-bottom: 0.5px;">
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="fw-icons0 col-lg-1 col-sm-5 grid-col fa fa-users"
+            style="float: left; height: 41.5px;margin-bottom: 0.5px;">
+            Customer
+        </div>
+        <div class="fw-icons0 col-lg-1 col-sm-5 grid-col" style="float: left;  height: 41.5px;margin-bottom: 0.5px;">
+            <div class="ti-printer ti-notepad">
+                Print
             </div>
         </div>
+        <div class="fw-icons0 col-lg-1 col-sm-5 grid-col fa fa-file-pdf-o"
+            style="float: left; height: 41.5px;margin-bottom: 0.5px;">
+            Save as pdf
+        </div>
+        <div class="fw-icons0 col-lg-1 col-sm-5 grid-col fa fa-file-text-o"
+            style="float: left; height: 41.5px;margin-bottom: 0.5px;">
+            Receipt
+        </div>
+        <div class="fw-icons0 col-lg-1 col-sm-5 grid-col ti-email"
+            style="float: left;height: 41.5px;margin-bottom: 0.5px;">
+            Send Mail
+        </div>
+        <div class="fw-icons0 col-lg-1 col-sm-5 grid-col fa fa-cart-arrow-down"
+            style="float: left;height: 41.5px;margin-bottom: 0.5px;  ">
+            Refund
+        </div>
+        <div class="fw-icons0 col-lg-1 col-sm-5 grid-col fa fa-trash-o"
+            style="float: left;height: 41.5px;margin-bottom: 0.5px;">
+            Delete
+        </div>
     </div>
-</div> -->
-<div class=" grid-col">
-    
-      <div class="fw-icons0 col-lg-1 col-sm-5"
-        >
-        <i class="fa fa-edit" ></i>
-      </div>
-      <div class="fw-icons0 col-lg-1 col-sm-5"
-      >
-        <i class="fa fa-asterisk" ></i>
-      </div>
-      <div class="fw-icons0 col-lg-1 col-sm-5"
-       >
-        <i class="fa fa-info" ></i>
-      </div>
-      <div class="fw-icons0 col-lg-1 col-sm-5"
-       >
-        <i class="fa fa-tag" ></i>
-      </div>
-      <div class="col-lg-2 clearfix">
-        <input type="text" name="search" placeholder="    Search Products By Name, Code or Bar code">
-      </div>
-      
-    </div>
-  </div>
-
-
+</div>
 <div class="form-container">
-    <div class="col-lg-6 mt-5">
-        <div class="card" style="width: 1500px;">
-            <div class="card-body">
-                <h4 class="text-uppercase">Documents</h4>
-                <div class="single-table">
-                    <div class="table-responsive">
-                        <table class="table text-center">
-                            <thead class="text-uppercase bg-dark">
-                                <tr class="text-white">
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">date</th>
-                                    <th scope="col">price</th>
-                                    <th scope="col">action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>09 / 07 / 2018</td>
-                                    <td>$120</td>
-                                    <td><i class="ti-trash"></i></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+    <div class="card" style="width: 1500px;">
+        <div class="card-body">
+            <h4 class="text-uppercase">Documents</h4>
+            <div class="single-table">
+                <div class="table-responsive">
+                    <table class="table text-center">
+                        <thead class="text-uppercase bg-dark">
+                            <tr class="text-white">
+                                <th scope="col">ID</th>
+                                <th scope="col">Document type </th>
+                                <th scope="col">User</th>
+                                <th scope="col">Number</th>
+                                <th scope="col">External document</th>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Created</th>
+                                <th scope="col">POS</th>
+                                <th scope="col">Order number</th>
+                                <th scope="col">Pyament Type</th>
+                                <th scope="col">Discount</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Cash</td>
+                                <td>Sam</td>
+                                <td>120</td>
+                                <td>12345</td>
+                                <td>Mark</td>
+                                <td>09 / 07 / 2018</td>
+                                <td>POS</td>
+                                <td>101</td>
+                                <td>Credit card</td>
+                                <td>10%</td>
+                                <td>$120</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Cash</td>
+                                <td>Sam</td>
+                                <td>120</td>
+                                <td>12345</td>
+                                <td>Mark</td>
+                                <td>09 / 07 / 2018</td>
+                                <td>POS</td>
+                                <td>101</td>
+                                <td>Credit card</td>
+                                <td>10%</td>
+                                <td>$120</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Cash</td>
+                                <td>Sam</td>
+                                <td>120</td>
+                                <td>12345</td>
+                                <td>Mark</td>
+                                <td>09 / 07 / 2018</td>
+                                <td>POS</td>
+                                <td>101</td>
+                                <td>Credit card</td>
+                                <td>10%</td>
+                                <td>$120</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Cash</td>
+                                <td>Sam</td>
+                                <td>120</td>
+                                <td>12345</td>
+                                <td>Mark</td>
+                                <td>09 / 07 / 2018</td>
+                                <td>POS</td>
+                                <td>101</td>
+                                <td>Credit card</td>
+                                <td>10%</td>
+                                <td>$120</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Cash</td>
+                                <td>Sam</td>
+                                <td>120</td>
+                                <td>12345</td>
+                                <td>Mark</td>
+                                <td>09 / 07 / 2018</td>
+                                <td>POS</td>
+                                <td>101</td>
+                                <td>Credit card</td>
+                                <td>10%</td>
+                                <td>$120</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Cash</td>
+                                <td>Sam</td>
+                                <td>120</td>
+                                <td>12345</td>
+                                <td>Mark</td>
+                                <td>09 / 07 / 2018</td>
+                                <td>POS</td>
+                                <td>101</td>
+                                <td>Credit card</td>
+                                <td>10%</td>
+                                <td>$120</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Cash</td>
+                                <td>Sam</td>
+                                <td>120</td>
+                                <td>12345</td>
+                                <td>Mark</td>
+                                <td>09 / 07 / 2018</td>
+                                <td>POS</td>
+                                <td>101</td>
+                                <td>Credit card</td>
+                                <td>10%</td>
+                                <td>$120</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div class="form-container">
-    <div class="col-lg-6 mt-5">
-        <div class="card" style="width: 1500px;">
-            <div class="card-body">
-                <h4 class="text-uppercase">Documents</h4>
-                <div class="single-table">
-                    <div class="table-responsive">
-                        <table class="table text-center">
-                            <thead class="text-uppercase bg-dark">
-                                <tr class="text-white">
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">date</th>
-                                    <th scope="col">price</th>
-                                    <th scope="col">action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>09 / 07 / 2018</td>
-                                    <td>$120</td>
-                                    <td><i class="ti-trash"></i></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+    <div class="card" style="width: 1500px;">
+        <div class="card-body">
+            <h4 class="text-uppercase">Document Items</h4>
+            <div class="single-table">
+                <div class="table-responsive">
+                    <table class="table text-center">
+                        <thead class="text-uppercase bg-dark">
+                            <tr class="text-white">
+                                <th scope="col">ID</th>
+                                <th scope="col">Code</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Unit Of measure</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price before tax</th>
+                                <th scope="col">tax</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Total before discount</th>
+                                <th scope="col">Discount</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>123</td>
+                                <td>Sam</td>
+                                <td>ng</td>
+                                <td>10</td>
+                                <td>500</td>
+                                <td>10%</td>
+                                <td>500</td>
+                                <td>550</td>
+                                <td>5%</td>
+                                <td>525</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>123</td>
+                                <td>Sam</td>
+                                <td>ng</td>
+                                <td>10</td>
+                                <td>500</td>
+                                <td>10%</td>
+                                <td>500</td>
+                                <td>550</td>
+                                <td>5%</td>
+                                <td>525</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>123</td>
+                                <td>Sam</td>
+                                <td>ng</td>
+                                <td>10</td>
+                                <td>500</td>
+                                <td>10%</td>
+                                <td>500</td>
+                                <td>550</td>
+                                <td>5%</td>
+                                <td>525</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>123</td>
+                                <td>Sam</td>
+                                <td>ng</td>
+                                <td>10</td>
+                                <td>500</td>
+                                <td>10%</td>
+                                <td>500</td>
+                                <td>550</td>
+                                <td>5%</td>
+                                <td>525</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>123</td>
+                                <td>Sam</td>
+                                <td>ng</td>
+                                <td>10</td>
+                                <td>500</td>
+                                <td>10%</td>
+                                <td>500</td>
+                                <td>550</td>
+                                <td>5%</td>
+                                <td>525</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>123</td>
+                                <td>Sam</td>
+                                <td>ng</td>
+                                <td>10</td>
+                                <td>500</td>
+                                <td>10%</td>
+                                <td>500</td>
+                                <td>550</td>
+                                <td>5%</td>
+                                <td>525</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>123</td>
+                                <td>Sam</td>
+                                <td>ng</td>
+                                <td>10</td>
+                                <td>500</td>
+                                <td>10%</td>
+                                <td>500</td>
+                                <td>550</td>
+                                <td>5%</td>
+                                <td>525</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div>
+    <div class="ml-5" style="float: left;">Documents Count:<br>
+        Total Amount:</div>
+    
+   <div class="mr-5" style="float: right;">
+    <button type="button" class="btn btn-flat btn-primary mb-3">Close</button>
+   </div>
 </div>

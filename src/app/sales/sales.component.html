@@ -76,19 +76,21 @@
                             </tr>
                           </thead>
                           <tbody  *ngIf="products.length>0">
-                            <tr  *ngFor="let prod of products ; let indexOfelement=index"
-                            (click)="selectedproductsRow(indexOfelement,prod)">
-                              <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
-                                {{prod?.id}}</td>
-                              <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
-                                {{prod?.name}}</td>
-                              <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
-                                {{prod?.quantity}}</td>
-                              <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
-                                {{prod?.sellPrice}}</td>
-                              <td>{{prod.total}}</td>
-                              <!-- <td (click)="deleteItem(id)"><i class="ti-trash"></i></td> -->
+                            <tr *ngFor="let prod of products; let indexOfelement = index" (click)="selectedproductsRow(indexOfelement, prod)">
+                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ prod?.id }}</td>
+                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'"> {{ prod?.name }}</td>
+                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">
+                                
+                                <button class="quantity-btn" (click)="decrementQuantity(prod)">-</button>
+                                {{ prod?.quantity }}
+                                <button class="quantity-btn" (click)="incrementQuantity(prod)">+</button>
 
+                              </td>
+                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ prod?.sellPrice }}</td>
+                              <td  [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ prod.total }}</td>
+                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">
+                                <i class="fa fa-trash-o" (click)="deleteRow(indexOfelement)"></i>
+                              </td>
                             </tr>
                           </tbody>
                         </table>
@@ -109,7 +111,7 @@
                   <th scope="col"></th>
                   <th scope="col"></th>
                   <th scope="col"></th>
-                  <th scope="col">Sub Total</th>
+                  <th scope="col"> Sub Total = {{finalTotal}}</th>
                 </tr>
               </thead>
               <thead class="text-uppercase bg-primary">
@@ -142,7 +144,7 @@
                   <th scope="col">final Total:</th>
                 </tr>
               </thead>
-              <tbody  *ngIf="products.length>0">
+              <!-- <tbody  *ngIf="products.length>0">
                 <tr>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -152,7 +154,7 @@
                 <th scope="col">{{finalTotal}}</th>
 
               </tr>
-              </tbody>
+              </tbody> -->
               </table>
             </div>
           </div>

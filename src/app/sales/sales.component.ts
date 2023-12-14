@@ -13,7 +13,7 @@ import { DialogRef } from '@angular/cdk/dialog';
   templateUrl: './sales.component.html',
   styleUrls: ['./sales.component.css'],
 })
-export class SalesComponent implements OnInit{
+export class SalesComponent implements OnInit {
   showCalculator: boolean = false;
   calculatorInput: string = '';
 
@@ -22,26 +22,27 @@ export class SalesComponent implements OnInit{
   selectedType = "name";
   showConfirmationDialog: boolean = false;
   products: any[] = [];
+  Action: number = 0;
   selectedProduct: Product | undefined;
   selectedRow = -1;
   isDeleteModalVisible: boolean = false;
   totalBefore: number = 0;
   totalTax: number = 0;
   totalDiscount: number = 0;
-  selectedcustomer=undefined;
+  selectedcustomer = undefined;
   finalTotal: number = 0;
   dialogConfig = new MatDialogConfig();
 
 
   constructor(private productService: ProductServiceService,
-     private dialog: MatDialog , private router: Router) {
+    private dialog: MatDialog, private router: Router) {
 
   }
 
   ngOnInit(): void {
   }
 
-  
+
 
   openDeleteConfirmationModal() {
     this.isDeleteModalVisible = true;
@@ -90,7 +91,7 @@ export class SalesComponent implements OnInit{
     });
   }
 
-  
+
   openCalculator(): void {
     const dialogRef = this.dialog.open(CalculatorComponent, {
       width: '400px',
@@ -101,23 +102,23 @@ export class SalesComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
 
       console.log('Dialog closed with result:', result);
-      this.totalDiscount=result;
+      this.totalDiscount = result;
     });
   }
   openCustomer(): void {
     const dialogRef = this.dialog.open(CustomerlistComponent, {
       width: '900px',
-      height:'400px',
+      height: '400px',
       disableClose: true,
     });
 
     dialogRef.afterClosed().subscribe(customer => {
 
       console.log('Selected Customer:', customer);
-      this.selectedcustomer=customer;
+      this.selectedcustomer = customer;
     });
   }
- 
+
 
 
   deleteItem(id: number) {
@@ -169,7 +170,7 @@ export class SalesComponent implements OnInit{
             else {
 
               const productPayload = {
-               "id":p['id'],
+                "id": p['id'],
                 "name": p["name"],
                 "quantity": 1,
                 "sellPrice": p["sellPrice"],
@@ -199,9 +200,9 @@ export class SalesComponent implements OnInit{
   }
   clearBill() {
     this.totalBefore = 0
-      this.totalTax = 0
-      this.totalDiscount = 0
-      this.finalTotal = 0
+    this.totalTax = 0
+    this.totalDiscount = 0
+    this.finalTotal = 0
   }
 
   showDeleteConfirmation() {
@@ -212,7 +213,7 @@ export class SalesComponent implements OnInit{
     }
   }
 
-  
+
   refreshComponent() {
     const currentUrl = this.router.url;
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
@@ -220,5 +221,31 @@ export class SalesComponent implements OnInit{
     });
   }
 
+
+
+  // Inside your component class
+  decrementQuantity(product: any): void {
+    if (product.quantity > 1) {
+      product.quantity--;
+      this.updateTotal(product);
+    }
+  }
+
+  incrementQuantity(product: any): void {
+    product.quantity++;
+    this.updateTotal(product);
+  }
+
+  updateTotal(product: any): void {
+    product.total = product.quantity * product.sellPrice;
+  }
+
+
+  public deleteRow(index: number): void {
+    if (index >= 0 && index < this.products.length) {
+      this.products.splice(index, 1);
+      this.selectedRow = -1;
+    }
+  }
 
 }
