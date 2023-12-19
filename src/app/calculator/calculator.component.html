@@ -1,4 +1,4 @@
-<div >
+<div  class="background">
     <div class="calculator "(keydown)="onKeyPress($event)">
         <input type="text" [(ngModel)]="displayValue" [readonly]="true" />
         <div class="buttons">
@@ -24,7 +24,7 @@
           <button (click)="eraseLast()">◀</button>
         </div>
    
-        <button (click)="close()">Close</button>
+        <button (click)="close()" class="mt-1">Close</button>
      
       </div>
 </div>

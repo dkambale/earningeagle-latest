@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerComponent } from '../customer/customer.component';
 import { CustomerlistComponent } from '../customerlist/customerlist.component';
 import { DialogRef } from '@angular/cdk/dialog';
+import { PaymentComponent } from '../payment/payment.component';
 
 @Component({
   selector: 'app-sales',
@@ -118,6 +119,23 @@ export class SalesComponent implements OnInit {
       this.selectedcustomer = customer;
     });
   }
+
+
+
+  openPayment(): void {
+    const dialogRef = this.dialog.open(PaymentComponent, {
+      
+      height: '550px',
+      disableClose: true,
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      console.log('Dialog closed with result:', result);
+    });
+  }
+
 
 
 

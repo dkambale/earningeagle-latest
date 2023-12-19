@@ -31,7 +31,7 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'tax-rates', component: TaxRatesComponent},
       { path: 'payment', component: PaymentComponent},
-      // { path: 'calculator', component: CalculatorComponent},
+       { path: 'calculator', component: CalculatorComponent},
       { path: 'customerlist', component: CustomerlistComponent},
       { path: 'salesHistory', component: SalesHistoryComponent}
     ]

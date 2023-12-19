@@ -5,42 +5,41 @@
         <div class="col-sm-7">
           <div class="grid-col">
             <div class="ml-1" style="display: flex;">
-              
-              <div class="fw-icons0 col-lg-1 col-sm-5" [ngClass]="selectedType=='all'? 'selectedCss':'deselectedCss'"><i
+
+              <div class="fw-icons0 col-lg-1 col-sm-5"><i [ngClass]="selectedType=='all'? 'selectedCss':'deselectedCss'"
                   class="fa fa-asterisk" (click)="byALlSearch()"></i></div>
-              <div class="fw-icons1 col-lg-1 col-sm-5"
-                [ngClass]="selectedType=='barcode'? 'selectedCss':'deselectedCss'"><i class="fa fa-barcode"
-                  (click)="byBarcode()"></i></div>
-              <div class="fw-icons2 col-lg-1 col-sm-5" [ngClass]="selectedType=='id'? 'selectedCss':'deselectedCss'"><i
+              <div class="fw-icons1 col-lg-1 col-sm-5"><i class="fa fa-barcode"
+                  [ngClass]="selectedType=='barcode'? 'selectedCss':'deselectedCss'" (click)="byBarcode()"></i> </div>
+              <div class="fw-icons2 col-lg-1 col-sm-5"><i [ngClass]="selectedType=='id'? 'selectedCss':'deselectedCss'"
                   class="fa fa-info" (click)="byid()"></i></div>
-              <div class="fw-icons2 col-lg-1 col-sm-5" [ngClass]="selectedType=='name'? 'selectedCss':'deselectedCss'">
-                <i class="fa fa-tag" (click)="byname()"></i>
+              <div class="fw-icons2 col-lg-1 col-sm-5">
+                <i class="fa fa-tag" (click)="byname()"
+                  [ngClass]="selectedType=='name'? 'selectedCss':'deselectedCss'"></i>
               </div>
               <div class="fw-icons0 col-lg-1 col-sm-5"
-              [ngClass]="selectedType=='Delete'? 'selectedCss':'deselectedCss'">
-              <i class="fa fa-trash-o" (click)="openDeleteConfirmationModal()"></i>
-              <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isDeleteModalVisible}">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title">Confirm Deletion</h5>
-                      <button type="button" class="close" aria-label="Close"
-                        (click)="closeDeleteConfirmationModal()">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      Are you sure you want to delete this product?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary"
-                        (click)="closeDeleteConfirmationModal()">Cancel</button>
-                      <button type="button" class="btn btn-danger" (click)="Delete()">Delete</button>
+                [ngClass]="selectedType=='Delete'? 'selectedCss':'deselectedCss'">
+                <i class="fa fa-trash-o" (click)="openDeleteConfirmationModal()"></i>
+                <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': isDeleteModalVisible}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Confirm Deletion</h5>
+                        <button type="button" class="close" aria-label="Close" (click)="closeDeleteConfirmationModal()">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Are you sure you want to delete this product?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                          (click)="closeDeleteConfirmationModal()">Cancel</button>
+                        <button type="button" class="btn btn-danger" (click)="Delete()">Delete</button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
               <div class="col-lg-2 clearfix">
                 <div class="search-box">
                   <form (ngSubmit)="onsubmit()">
@@ -58,7 +57,7 @@
           </div>
           <div class="main-content-inner">
             <div class="row">
-             
+
               <div class="form-container1">
                 <div class="card ">
                   <div class="card-body">
@@ -75,19 +74,24 @@
                               <th scope="col">action</th>
                             </tr>
                           </thead>
-                          <tbody  *ngIf="products.length>0">
-                            <tr *ngFor="let prod of products; let indexOfelement = index" (click)="selectedproductsRow(indexOfelement, prod)">
-                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ prod?.id }}</td>
-                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'"> {{ prod?.name }}</td>
+                          <tbody *ngIf="products.length>0">
+                            <tr *ngFor="let prod of products; let indexOfelement = index"
+                              (click)="selectedproductsRow(indexOfelement, prod)">
+                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
+                                prod?.id }}</td>
+                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'"> {{
+                                prod?.name }}</td>
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">
-                                
+
                                 <button class="quantity-btn" (click)="decrementQuantity(prod)">-</button>
                                 {{ prod?.quantity }}
                                 <button class="quantity-btn" (click)="incrementQuantity(prod)">+</button>
 
                               </td>
-                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ prod?.sellPrice }}</td>
-                              <td  [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ prod.total }}</td>
+                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
+                                prod?.sellPrice }}</td>
+                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
+                                prod.total }}</td>
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">
                                 <i class="fa fa-trash-o" (click)="deleteRow(indexOfelement)"></i>
                               </td>
@@ -99,52 +103,52 @@
                   </div>
                 </div>
               </div>
-             
+
 
             </div>
-            <div >
+            <div>
               <table class="table text-center">
-              <thead class="text-uppercase bg-primary">
-                <tr class="text-white">
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"> Sub Total = {{finalTotal}}</th>
-                </tr>
-              </thead>
-              <thead class="text-uppercase bg-primary">
-                <tr class="text-white">
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col">Tax:</th>
-                </tr>
-              </thead>
-              <thead class="text-uppercase bg-primary">
-                <tr class="text-white">
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col">Disscount:</th>
-                </tr>
-              </thead>
-              <thead class="text-uppercase bg-primary">
-                <tr class="text-white">
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col">final Total:</th>
-                </tr>
-              </thead>
-              <!-- <tbody  *ngIf="products.length>0">
+                <thead class="text-uppercase bg-primary">
+                  <tr class="text-white">
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"> Sub Total = {{finalTotal}}</th>
+                  </tr>
+                </thead>
+                <thead class="text-uppercase bg-primary">
+                  <tr class="text-white">
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Tax:</th>
+                  </tr>
+                </thead>
+                <thead class="text-uppercase bg-primary">
+                  <tr class="text-white">
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Disscount:</th>
+                  </tr>
+                </thead>
+                <thead class="text-uppercase bg-primary">
+                  <tr class="text-white">
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">final Total:</th>
+                  </tr>
+                </thead>
+                <!-- <tbody  *ngIf="products.length>0">
                 <tr>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -162,22 +166,22 @@
         <div class="col-sm-5 form-container ">
           <div class="grid-col">
 
-            <button type="button" class="btn btn-flat btn-primary mb-3" (click)="showDeleteConfirmation()">
+            <button type="button" class="btn btn-flat btn-primary mb-3 ml-3" (click)="showDeleteConfirmation()">
               <i class="fa fa-trash-o"></i>Delete
             </button>
-            <button type="button" class="btn btn-flat btn-success mb-3" ><i
+            <button type="button" class="btn btn-flat btn-success mb-3 ml-3"><i
                 class=" ti-search col-lg-0 "></i>Search</button>
-            <button type="button" class="btn btn-flat btn-danger mb-3" ><i
+            <button type="button" class="btn btn-flat btn-danger mb-3 ml-3"><i
                 class="fa fa-trash-o"></i>Quantity</button>
-            <button type="button" class="btn btn-flat btn-warning mb-3" ><i class="fa fa-cart-plus"></i>New
+            <button type="button" class="btn btn-flat btn-warning mb-3 ml-3"><i class="fa fa-cart-plus"></i>New
               Sell</button>
             <div class="row">
               <div class="col-md-4">
-                <button type="button" class=" grid-col mb-3" >
-                 
-                    <a routerLink="/home/payment">Cash </a>
-              
-                </button>
+
+
+                <div class="grid-col"> Cash Payment</div>
+
+
               </div>
               <div class="col-md-4">
                 <div class="grid-col">Credt Card</div>
@@ -186,7 +190,7 @@
                 <div class="grid-col">Debit Card</div>
               </div>
               <div class="col-md-4">
-                <div class="grid-col">Check</div>
+                <div class="grid-col">Check Payment</div>
               </div>
               <div class="col-md-4">
                 <div class="grid-col">Voucher</div>
@@ -195,24 +199,25 @@
                 <div class="grid-col">Gift Card</div>
               </div>
             </div>
-            <div style="height:150px;width: 250px; text-align: center;color: rgb(106, 104, 102) ;">
+            <div style="height:150px;width: 570px;background-color: black;">
+              <img style="height:100%;width: 100%;" src="assets/images/author/SC.png" alt="SC">
               Earning Eagle
             </div>
             <div class="row">
               <div class="col-lg-3 col- md-6" (click)="openCalculator()">
 
-                <button type="button" class=" grid-col mb-3" >
-                  <li>
-                    <!-- <a routerLink="/home/calculator">Disscount </a> -->
-                    Disscount
-                  </li>
+                <button type="button" class=" grid-col mb-3">
+
+                  <!-- <a routerLink="/home/calculator">Disscount </a> -->
+                  Disscount
+
                 </button>
 
               </div>
               <div class="col-lg-3 col-md-6">
                 <div class="grid-col"><i class="fa fa-commenting"></i>Comment</div>
               </div>
-              <div class="col-lg-3 col-md-6"   (click)="openCustomer()" >
+              <div class="col-lg-3 col-md-6" (click)="openCustomer()">
                 <div class="grid-col"><i class="fa fa-male"></i>Customer</div>
               </div>
               <div class="col-lg-3 col-md-6">
@@ -224,7 +229,7 @@
               <div class="col-md-4">
                 <div class="grid-col">Refund</div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4" (click)="openPayment()">
                 <div class="grid-col">Payment</div>
               </div>
 
