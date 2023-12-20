@@ -26,6 +26,7 @@ import { ProductComponent } from './product/product.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CustomerlistComponent } from './customerlist/customerlist.component';
 import { SalesHistoryComponent } from './sales-history/sales-history.component';
+import { RefundComponent } from './refund/refund.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { SalesHistoryComponent } from './sales-history/sales-history.component';
     PaymentComponent,
     CalculatorComponent,
     CustomerlistComponent,
-    SalesHistoryComponent
+    SalesHistoryComponent,
+    RefundComponent
   ],
   imports: [
     BrowserModule,

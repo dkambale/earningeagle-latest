@@ -69,6 +69,7 @@
                               <th scope="col">ID</th>
                               <th scope="col">Name</th>
                               <th scope="col">Quantity</th>
+                              <th scope="col">Tax</th>
                               <th scope="col">Price</th>
                               <th scope="col">Total</th>
                               <th scope="col">action</th>
@@ -88,6 +89,8 @@
                                 <button class="quantity-btn" (click)="incrementQuantity(prod)">+</button>
 
                               </td>
+                              <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
+                                prod?.tax }}</td>
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
                                 prod?.sellPrice }}</td>
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
@@ -229,8 +232,8 @@
               <div class="col-md-4">
                 <div class="grid-col">Refund</div>
               </div>
-              <div class="col-md-4" (click)="openPayment()">
-                <div class="grid-col">Payment</div>
+              <div class="col-md-4" [ngClass]="selectedType=='id'? 'selectedCss':'deselectedCss'" (click)="openPayment()">
+                <div class="grid-col"[ngClass]="selectedType=='Payment'? 'selectedCss':'deselectedCss'" >Payment</div>
               </div>
 
               <div class="col-lg-3 col-md-6">

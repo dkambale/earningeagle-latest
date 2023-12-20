@@ -15,6 +15,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { CustomerlistComponent } from './customerlist/customerlist.component';
 import { SalesHistoryComponent } from './sales-history/sales-history.component';
+import { RefundComponent } from './refund/refund.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -33,6 +34,7 @@ const routes: Routes = [
       { path: 'payment', component: PaymentComponent},
        { path: 'calculator', component: CalculatorComponent},
       { path: 'customerlist', component: CustomerlistComponent},
+      { path: 'refund', component: RefundComponent},
       { path: 'salesHistory', component: SalesHistoryComponent}
     ]
   }

@@ -123,9 +123,10 @@ export class SalesComponent implements OnInit {
 
 
   openPayment(): void {
+    this.selectedType = "Payment"
     const dialogRef = this.dialog.open(PaymentComponent, {
       
-      height: '550px',
+      height: '451px',
       disableClose: true,
     });
 
@@ -191,11 +192,16 @@ export class SalesComponent implements OnInit {
                 "id": p['id'],
                 "name": p["name"],
                 "quantity": 1,
+                "tax":0,
                 "sellPrice": p["sellPrice"],
                 "total": p["sellPrice"],
-                "subTotal": p["subTotal  "]
+                "subTotal": p["subTotal"],
+                "govtGST":p["govtGST"],
+                "stateGST":p["stateGST"],
+                "isisTaxIncluded":p["isTaxIncluded"]
               }
 
+             
               this.products.push(productPayload);
             }
           });
@@ -204,16 +210,43 @@ export class SalesComponent implements OnInit {
       }
     )
   }
+  getTotal(p: any, tax: number) {
+   
+    let total=0;
+    if(p.isTaxIncluded) {
+      
+      total= p.sellPrice * p.quantity;
+    } else {
+      total= (p.sellPrice+tax) * p.quantity;
+    }
+    return total;
+  }
+  getTaxForItem(p: Product) {
+   let tax=0;
+    if(p.isTaxIncluded) {
+      tax= (p.sellPrice*(p.govtGST+p.stateGST)/100);
+    } else {
+     
+      tax= p.sellPrice-(p.sellPrice*(100-p.govtGST-p.stateGST)/100);
+    }
+    return tax;
+  }
 
   finalBill() {
 
     this.clearBill();
     this.products.forEach(product => {
+      //indivisual product update
+      let tax=this.getTaxForItem(product);
+      product["tax"]=tax;
+      product["total"]= this.getTotal(product,tax);
 
       this.totalBefore = this.totalBefore + product.total
-      this.totalTax = this.totalTax + 0;
+      this.totalTax = this.totalTax + product["tax"];
       this.totalDiscount = 0
-      this.finalTotal = this.totalBefore + this.totalTax - this.totalDiscount;
+      this.finalTotal = this.totalBefore - this.totalDiscount;
+
+
     })
   }
   clearBill() {
