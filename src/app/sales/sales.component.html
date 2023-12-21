@@ -84,9 +84,9 @@
                                 prod?.name }}</td>
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">
 
-                                <button class="quantity-btn" (click)="decrementQuantity(prod)">-</button>
+                                <button class="quantity-btn fa fa-minus-square-o" (click)="decrementQuantity(prod)"></button>
                                 {{ prod?.quantity }}
-                                <button class="quantity-btn" (click)="incrementQuantity(prod)">+</button>
+                                <button class="quantity-btn fa fa-plus-square-o" (click)="incrementQuantity(prod)"></button>
 
                               </td>
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
@@ -128,7 +128,7 @@
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
-                    <th scope="col">Tax:</th>
+                    <th scope="col">Tax  = {{ tax}}</th>
                   </tr>
                 </thead>
                 <thead class="text-uppercase bg-primary">
@@ -229,7 +229,7 @@
               <div class="col-md-4">
                 <div class="grid-col">Save Cell</div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4"   (click)=" openRefund()">
                 <div class="grid-col">Refund</div>
               </div>
               <div class="col-md-4" [ngClass]="selectedType=='id'? 'selectedCss':'deselectedCss'" (click)="openPayment()">

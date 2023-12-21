@@ -8,6 +8,7 @@ import { CustomerComponent } from '../customer/customer.component';
 import { CustomerlistComponent } from '../customerlist/customerlist.component';
 import { DialogRef } from '@angular/cdk/dialog';
 import { PaymentComponent } from '../payment/payment.component';
+import { RefundComponent } from '../refund/refund.component';
 
 @Component({
   selector: 'app-sales',
@@ -32,6 +33,7 @@ export class SalesComponent implements OnInit {
   totalDiscount: number = 0;
   selectedcustomer = undefined;
   finalTotal: number = 0;
+  tax:number=0;
   dialogConfig = new MatDialogConfig();
 
 
@@ -110,6 +112,22 @@ export class SalesComponent implements OnInit {
     const dialogRef = this.dialog.open(CustomerlistComponent, {
       width: '900px',
       height: '400px',
+      disableClose: true,
+    });
+
+    dialogRef.afterClosed().subscribe(customer => {
+
+      console.log('Selected Customer:', customer);
+      this.selectedcustomer = customer;
+    });
+  }
+
+
+
+  openRefund(): void {
+    const dialogRef = this.dialog.open(RefundComponent, {
+      width: '150%',
+      height: '100%',
       disableClose: true,
     });
 
@@ -241,11 +259,11 @@ export class SalesComponent implements OnInit {
       product["tax"]=tax;
       product["total"]= this.getTotal(product,tax);
 
-      this.totalBefore = this.totalBefore + product.total
+      this.totalBefore = this.totalBefore + product.total;
       this.totalTax = this.totalTax + product["tax"];
       this.totalDiscount = 0
       this.finalTotal = this.totalBefore - this.totalDiscount;
-
+      
 
     })
   }
@@ -289,6 +307,7 @@ export class SalesComponent implements OnInit {
 
   updateTotal(product: any): void {
     product.total = product.quantity * product.sellPrice;
+    this.finalBill()
   }
 
 
@@ -298,5 +317,7 @@ export class SalesComponent implements OnInit {
       this.selectedRow = -1;
     }
   }
+
+  
 
 }

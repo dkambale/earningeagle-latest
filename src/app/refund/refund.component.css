@@ -1,0 +1,56 @@
+.w {
+    height: 45px;
+    width: 250px;
+    text-align: center;
+    border: 10px 10px 10px 10px;
+    border-color: blue;
+}
+
+.c {
+    background-color: rgb(2, 154, 50);
+    color: rgb(255, 255, 255);
+}
+
+.c2 {
+    background-color: crimson;
+    color: rgb(255, 255, 255);
+}
+
+.b {
+    border: 30px 30px 30px 30px;
+    border-color: rgb(176, 176, 184);
+    background-color: rgb(102, 105, 109);
+    color: white;
+}
+
+.grid-col {
+    border: 1px solid black;
+    padding: 10px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+
+.grid-col:hover {
+    border-color: blue;
+}
+
+.grid-col {
+    border: 1px solid black;
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out;
+}
+
+
+.row .grid-col,
+.row .col-md-4,
+.row .col-sm-6 {
+    cursor: pointer;
+}
+
+.row .grid-col.selected,
+.row .col-md-4.selected,
+.row .col-sm-6.selected {
+    background-color: rgb(76, 78, 80);
+}

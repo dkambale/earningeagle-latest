@@ -244,5 +244,15 @@
     cursor: not-allowed;
   }
 
+  .bg{
+    background-color:  rgb(26, 26, 26);
+  }
+.bg1{
+  background-color: black;
+}
+  bg2{
+    color: rgb(27, 228, 191);
+   
+  }
 
   

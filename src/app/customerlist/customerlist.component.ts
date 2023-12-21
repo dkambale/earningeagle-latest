@@ -31,6 +31,11 @@ export class CustomerlistComponent {
       type: ['', Validators.required]
     });
   }
+  displayValue: string = '';
+  close1() {
+    this.dialogRef.close( this.displayValue);
+  }
+
   ngOnInit(): void {
     this.customerService.getAllcustomerWihSearch(this.searchValue).subscribe(res => {
       console.log(res);

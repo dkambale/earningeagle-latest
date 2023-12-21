@@ -1,19 +1,66 @@
-<div style="height: 30px;width: 100%;background-color: rgb(5, 5, 5);color: aliceblue;">
+<div style="height: 30px;width: 100%;background-color: rgb(75, 75, 75);color: aliceblue;">
     <h2>Refund Items</h2>
 </div>
 <div style="width: 30%;height:642px; background-color:  rgb(102, 105, 109); color: aliceblue;float: left;">
-
+   
 
 </div>
 <div style="width: 70%;height:642px; background-color:  rgb(101, 102, 103); color: aliceblue; float: right; 
 text-align: center;">
-    <div style="padding: 150px 150px 150px 150px;">
+    <div style="padding: 29px 150px 150px 150px;">
         <h1>
             <img style="" src="assets/images/author/refund.png" alt="refund"><br>
             Enter recipt number and payment type to confirm <br>
             refund<br>
-            *************
+            ---------------<br>
+            <h2>Receipt number</h2>
         </h1>
+        <input type="text" name="search" placeholder="Enter Number" class="bg w">
+        <br>
+        <br>
+        <h3>
+            Refund payment type
+        </h3>
+        <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="grid-col b" (click)="selectGrid('Cash')" [ngClass]="{'selected': selectedGrid === 'Cash'}">
+                    Cash </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="grid-col b" (click)="selectGrid('CreditCard')"
+                    [ngClass]="{'selected': selectedGrid === 'CreditCard'}">CreditCard</div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="grid-col b" (click)="selectGrid('DebitCard')"
+                    [ngClass]="{'selected': selectedGrid === 'DebitCard'}">DebitCard</div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="grid-col b" (click)="selectGrid('Voucher')"
+                    [ngClass]="{'selected': selectedGrid === 'Voucher'}">Voucher</div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="grid-col b" (click)="selectGrid('Check')"
+                    [ngClass]="{'selected': selectedGrid === 'Check'}">Check </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="grid-col b" (click)="selectGrid('Gift Card')"
+                    [ngClass]="{'selected': selectedGrid === 'Gift Card'}">Gift Card</div>
+            </div>
+        </div>
+        <br>
+        -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        <br>
 
+        <div style="float: right;">
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-6 ml-4" style="width: 100px;">
+                    <div class="grid-col c" (click)="close() ">OK </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 ml-4" style="width: 100px;">
+                    <div class="grid-col c2" (click)="close() ">CANCEL</div>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>

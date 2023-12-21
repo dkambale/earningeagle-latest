@@ -50,7 +50,7 @@
                                 <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
                                   {{cust?.address}}</td>
                                 <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'">
-                                  <button  (click)="close(indexOfelement,cust)" >Select</button>
+                                  <button  class="btn btn-flat btn-primary mb-3" (click)="close(indexOfelement,cust)" >Select</button>
                                 </td>
                               </tr>
                             </tbody>
@@ -60,7 +60,7 @@
                     </div>
                   </div>
                 </div>
-              </div><button type="button" class="btn btn-flat btn-primary mb-3" style="float: right;">Close</button>
+              </div><button type="button" (click)="close1()" class="btn btn-flat btn-primary mb-3" style="float: right; background-color: red;">Close</button>
             </div>
           </div>
         </div>

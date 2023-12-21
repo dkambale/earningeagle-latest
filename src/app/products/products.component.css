@@ -1,52 +1,54 @@
-.container{
-    background-color: #141515;
-    width: 100%;
-    height:100%;
-    }
+.container {
+  background-color: #141515;
+  width: 100%;
+  height: 100%;
+}
 
-    .draggable-container {
-      position: relative;
-      
-
-    }
-    
-    .draggable-container > div {
-      height: 100px;
-      width: 100px;
-      cursor: move;
-    }
-
-    .product-table {
-      background-color: #185862;
-      color: #fff;
-      width: 100%;
-      border-collapse: collapse;
-      /* margin-top: 20px; */
-    }
+.draggable-container {
+  position: relative;
 
 
+}
+
+.draggable-container>div {
+  height: 100px;
+  width: 100px;
+  cursor: move;
+}
+
+.product-table {
+  background-color: #185862;
+  color: #fff;
+  width: 100%;
+  border-collapse: collapse;
+  /* margin-top: 20px; */
+}
 
 
-    .fw-icons0 a {
-      display: block;
-      text-decoration: none;
-      color: #333;
-      position: relative;
-  }
 
-  .fw-icons0 i {
-      margin-right: 5px; 
-  }
-  .fw-icons1 a {
-    display: block;
-    text-decoration: none;
-    color: #333;
-    position: relative;
+
+.fw-icons0 a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+}
+
+.fw-icons0 i {
+  margin-right: 5px;
+}
+
+.fw-icons1 a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  position: relative;
 }
 
 .fw-icons1 i {
-    margin-right: 5px; 
+  margin-right: 5px;
 }
+
 .fw-icons2 a {
   display: block;
   text-decoration: none;
@@ -55,8 +57,9 @@
 }
 
 .fw-icons2 i {
-  margin-right: 5px; 
+  margin-right: 5px;
 }
+
 .fw-icons3 a {
   display: block;
   text-decoration: none;
@@ -65,94 +68,93 @@
 }
 
 .fw-icons3 i {
-  margin-right: 5px; 
+  margin-right: 5px;
 }
 
-  .fw-icons0 a:hover::after {
-      content: "Search By Barcode, ID, Name";
-      position: absolute;
-      top: 100%;
-      left: 50%; 
-      transform: translateX(-50%);
-      background-color: rgb(59, 59, 108); 
-      color: #fff; 
-      padding: 2px;
-      border-radius: 5px; 
-      white-space: nowrap; 
-      
-  }
-  .fw-icons1 a:hover::after {
-      content: "Search By Barcode ";
-      position: absolute;
-      top: 100%;
-      left: 50%; 
-      transform: translateX(-50%);
-      background-color: rgb(59, 59, 108); 
-      color: #fff; 
-      padding: 2px;
-      border-radius: 5px; 
-      white-space: nowrap; 
-  }
-  .fw-icons2 a:hover::after {
-      content: "Search By ID ";
-      position: absolute;
-      top: 100%;
-      left: 50%; 
-      transform: translateX(-50%);
-      background-color: rgb(59, 59, 108); 
-      color: #fff; 
-      padding: 2px;
-      border-radius: 5px; 
-      white-space: nowrap; 
-  }
-  .fw-icons3 a:hover::after {
-      content: "Search By Name ";
-      position: absolute;
-      top: 100%;
-      left: 50%; 
-      transform: translateX(-50%);
-      background-color: rgb(59, 59, 108); 
-      color: #fff; 
-      padding: 2px;
-      border-radius: 5px; 
-      white-space: nowrap; 
-  }
+.fw-icons0 a:hover::after {
+  content: "Search By Barcode, ID, Name";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(59, 59, 108);
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  white-space: nowrap;
 
-  .selectedCss{
-    background-color: rgb(172, 172, 255); 
-  }
+}
 
-  .deselectedCss {
-    
-    color: 
+.fw-icons1 a:hover::after {
+  content: "Search By Barcode ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(59, 59, 108);
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.fw-icons2 a:hover::after {
+  content: "Search By ID ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(59, 59, 108);
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.fw-icons3 a:hover::after {
+  content: "Search By Name ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(59, 59, 108);
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.selectedCss {
+  background-color: rgb(172, 172, 255);
+}
+
+.deselectedCss {
+
+  color:
     rgb(0, 0, 0);
-  }
+}
 
 
-  .container-1{
-    height: 100%;
-    width:100%;
-  }
+.container-1 {
+  height: 100%;
+  width: 100%;
+}
 
 
 
 .form-container {
-  max-width: 600px; /* Adjust the maximum width as needed */
-  margin: 0 auto;   /* Center the form on the screen */
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .card {
-  width: 100%;       /* Ensure the card takes full width of its container */
+  width: 100%;
 }
 
 .form-group {
-  margin-right: 50%; /* Adjust the right margin as needed */
+  margin-right: 50%;
 }
 
-
-/* Your existing styles */
-
-/* Style for the modal */
 .modal {
   display: none;
   position: fixed;
@@ -169,14 +171,14 @@
   display: block;
 }
 
-.form-container{
+.form-container {
 
   max-height: 500px;
   overflow-y: auto;
   padding: 10px;
 }
 
-.form-container1{
+.form-container1 {
 
   max-height: 250px;
   max-width: 900px;
@@ -184,7 +186,7 @@
   padding: 10px;
 }
 
-.form-container2{
+.form-container2 {
 
   height: 500px;
   max-width: 900px;
