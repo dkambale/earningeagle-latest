@@ -16,6 +16,7 @@ export class ProductsComponent implements AfterViewInit, OnInit {
   searchValue = " ";
   selectedRow = -1;
   selectedProduct: Product | undefined;
+  
   isCollapse = false;
   selectedType = "";
   productsForm: FormGroup;
@@ -28,10 +29,11 @@ export class ProductsComponent implements AfterViewInit, OnInit {
   products: any[] = [];
   taxes: any[] = [];
   isDeleteModalVisible: boolean = false;
+  
 
   constructor(private fb: FormBuilder, elementRef: ElementRef,
     private productService: ProductServiceService, private router: Router,
-    private taxService: TaxRatesService) {
+    private taxService: TaxRatesService,) {
     this.user = '';
     this.product = '';
     this.sales = '';
@@ -55,6 +57,7 @@ export class ProductsComponent implements AfterViewInit, OnInit {
       tax: [null, Validators.required],
       type: ['', Validators.required]
     });
+    
 
   }
   ngAfterViewInit() {

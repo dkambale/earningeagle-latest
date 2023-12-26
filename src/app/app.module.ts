@@ -27,6 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CustomerlistComponent } from './customerlist/customerlist.component';
 import { SalesHistoryComponent } from './sales-history/sales-history.component';
 import { RefundComponent } from './refund/refund.component';
+import { DocumentComponent } from './document/document.component';
+import { CommentComponent } from './comment/comment.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { RefundComponent } from './refund/refund.component';
     CalculatorComponent,
     CustomerlistComponent,
     SalesHistoryComponent,
-    RefundComponent
+    RefundComponent,
+    DocumentComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

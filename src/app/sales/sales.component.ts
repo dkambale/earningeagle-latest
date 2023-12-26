@@ -9,6 +9,7 @@ import { CustomerlistComponent } from '../customerlist/customerlist.component';
 import { DialogRef } from '@angular/cdk/dialog';
 import { PaymentComponent } from '../payment/payment.component';
 import { RefundComponent } from '../refund/refund.component';
+import { CommentComponent } from '../comment/comment.component';
 
 @Component({
   selector: 'app-sales',
@@ -64,6 +65,14 @@ export class SalesComponent implements OnInit {
       })
     }
   }
+
+  lock(){
+
+
+  }
+
+
+  
   getAllProducts() {
     this.productService.getAllProductWihSearch(this.searchValue).subscribe(
       res => {
@@ -138,6 +147,19 @@ export class SalesComponent implements OnInit {
     });
   }
 
+  openComment(): void {
+    const dialogRef = this.dialog.open(CommentComponent, {
+      width: '150%',
+      height: '93%',
+      disableClose: true,
+    });
+
+    dialogRef.afterClosed().subscribe(customer => {
+
+      console.log('Selected Customer:', customer);
+      this.selectedcustomer = customer;
+    });
+  }
 
 
   openPayment(): void {
@@ -317,7 +339,4 @@ export class SalesComponent implements OnInit {
       this.selectedRow = -1;
     }
   }
-
-  
-
 }
