@@ -18,6 +18,7 @@ import { SalesHistoryComponent } from './sales-history/sales-history.component';
 import { RefundComponent } from './refund/refund.component';
 import { DocumentComponent } from './document/document.component';
 import { CommentComponent } from './comment/comment.component';
+import { StockComponent } from './stock/stock.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -39,6 +40,7 @@ const routes: Routes = [
       { path: 'refund', component: RefundComponent},
       { path: 'salesHistory', component: SalesHistoryComponent},
       { path: 'comment', component: CommentComponent},
+      { path: 'stock', component: StockComponent},
       { path: 'document', component: DocumentComponent}
     ]
   }

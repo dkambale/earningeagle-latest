@@ -14,16 +14,23 @@ color: white;
 
 .div2{
     height: 225px;
-    background-color: grey;
+    background-color: rgb(62, 62, 62);
+    color: white;
 }
 
 .div3{
     height: 225px;
-    background-color:grey;
+    background-color: rgb(62, 62, 62);
+    color: white;
 
 }
 
 .div4{
     height: 50px;
-    background-color: grey;
+    background-color: rgb(206, 206, 206);
+    color: white;
+}
+
+.cr{
+    color: white;
 }

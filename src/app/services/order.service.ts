@@ -1,0 +1,61 @@
+import { Injectable } from '@angular/core';
+import { Order } from '../beans/order';
+import { OrderItem } from '../beans/order-item';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class OrderService {
+  environment = {
+    "apiURL": "http://localhost:9090"
+  };;
+
+  private serverUrl = `${this.environment.apiURL}/order`;
+
+  private serverBaseUrl = this.environment.apiURL;
+
+  private serverUrlForCompay = `${this.environment.apiURL}/company`
+
+  constructor(private http: HttpClient) {
+  }
+
+  formData: Order = new Order();
+  orderItems: OrderItem[] = [];
+
+  saveOrUpdateOrder() {
+    var body = {
+      ...this.formData,
+      OrderItems: this.orderItems
+    };
+    return this.http.post(this.environment.apiURL + '/Order', body);
+  }
+  saveOrUpdateOrderNew() {
+    console.log("Method is called####");
+    this.formData.orderItems = this.orderItems;
+    return this.http.post(this.environment.apiURL + '/Order', this.formData);
+  }
+
+  getOrderList(type: number) {
+    return this.http.get<Order[]>(this.environment.apiURL + 'order/list/' + type).toPromise();
+  }
+
+  getOrderByID(id: number) {
+    return this.http.get<Order>(this.environment.apiURL + '/Order/' + id);
+  }
+
+  deleteOrder(id: number) {
+    return this.http.delete(this.environment.apiURL + 'Order/' + id).toPromise();
+  }
+
+  getItemListByOrderID(orderId: number) {
+    return this.http.get<OrderItem[]>(this.environment.apiURL + '/TodaysOrderList/' + orderId).toPromise();
+  }
+
+  getOrderMapForCustomerId(customerId: number) {
+    return this.http.get<any>(this.environment.apiURL + '/ordersForCustomerId/' + customerId).toPromise();
+  }
+  getOrderMapForVendorId(vendorId: number) {
+    return this.http.get<any>(this.environment.apiURL + '/ordersForVendorId/' + vendorId).toPromise();
+  }
+}

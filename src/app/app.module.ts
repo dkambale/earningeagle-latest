@@ -29,6 +29,7 @@ import { SalesHistoryComponent } from './sales-history/sales-history.component';
 import { RefundComponent } from './refund/refund.component';
 import { DocumentComponent } from './document/document.component';
 import { CommentComponent } from './comment/comment.component';
+import { StockComponent } from './stock/stock.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { CommentComponent } from './comment/comment.component';
     SalesHistoryComponent,
     RefundComponent,
     DocumentComponent,
-    CommentComponent
+    CommentComponent,
+    StockComponent
   ],
   imports: [
     BrowserModule,

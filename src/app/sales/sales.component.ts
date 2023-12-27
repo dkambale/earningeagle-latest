@@ -278,11 +278,11 @@ export class SalesComponent implements OnInit {
     this.products.forEach(product => {
       //indivisual product update
       let tax=this.getTaxForItem(product);
-      product["tax"]=tax;
+      product["tax"]=tax * product.quantity;
       product["total"]= this.getTotal(product,tax);
 
       this.totalBefore = this.totalBefore + product.total;
-      this.totalTax = this.totalTax + product["tax"];
+      this.totalTax = this.totalTax + product["tax"] ;
       this.totalDiscount = 0
       this.finalTotal = this.totalBefore - this.totalDiscount;
       
@@ -292,7 +292,7 @@ export class SalesComponent implements OnInit {
   clearBill() {
     this.totalBefore = 0
     this.totalTax = 0
-    this.totalDiscount = 0
+    this.totalDiscount 
     this.finalTotal = 0
   }
 
@@ -314,7 +314,7 @@ export class SalesComponent implements OnInit {
 
 
 
-  // Inside your component class
+  
   decrementQuantity(product: any): void {
     if (product.quantity > 1) {
       product.quantity--;
@@ -331,7 +331,6 @@ export class SalesComponent implements OnInit {
     product.total = product.quantity * product.sellPrice;
     this.finalBill()
   }
-
 
   public deleteRow(index: number): void {
     if (index >= 0 && index < this.products.length) {
