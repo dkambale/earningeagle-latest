@@ -30,6 +30,10 @@ export class OrderService {
     };
     return this.http.post(this.environment.apiURL + '/Order', body);
   }
+  saveOrder(order:any) {
+    return this.http.post(this.environment.apiURL + '/Order', order);
+  }
+
   saveOrUpdateOrderNew() {
     console.log("Method is called####");
     this.formData.orderItems = this.orderItems;

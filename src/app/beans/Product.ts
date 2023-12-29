@@ -17,7 +17,7 @@ export class Product {
     public description:string;
     public vendorId:number;
     public gstUnit:number;
-    public type: string;
+    public type: number;
     constructor() { 
         this.id=0,
         this.name="",
@@ -34,7 +34,7 @@ export class Product {
         this.description="",
         this.vendorId=0,
         this.gstUnit=0,
-        this.type=""
+        this.type=0
     }
 
 }

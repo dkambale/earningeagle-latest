@@ -10,6 +10,8 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { PaymentComponent } from '../payment/payment.component';
 import { RefundComponent } from '../refund/refund.component';
 import { CommentComponent } from '../comment/comment.component';
+import { OrderService } from '../services/order.service';
+import { Order } from '../beans/order';
 
 @Component({
   selector: 'app-sales',
@@ -34,12 +36,13 @@ export class SalesComponent implements OnInit {
   totalDiscount: number = 0;
   selectedcustomer = undefined;
   finalTotal: number = 0;
-  tax:number=0;
+  final:number=0;
+  tax: number = 0;
   dialogConfig = new MatDialogConfig();
 
 
   constructor(private productService: ProductServiceService,
-    private dialog: MatDialog, private router: Router) {
+    private dialog: MatDialog, private router: Router, private orderService: OrderService) {
 
   }
 
@@ -66,13 +69,13 @@ export class SalesComponent implements OnInit {
     }
   }
 
-  lock(){
+  lock() {
 
 
   }
 
 
-  
+
   getAllProducts() {
     this.productService.getAllProductWihSearch(this.searchValue).subscribe(
       res => {
@@ -114,7 +117,7 @@ export class SalesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       console.log('Dialog closed with result:', result);
-      this.totalDiscount = result;
+      this.totalDiscount = Number.parseInt(result);
     });
   }
   openCustomer(): void {
@@ -163,9 +166,31 @@ export class SalesComponent implements OnInit {
 
 
   openPayment(): void {
+    let order = {
+      orderID: null,
+      orderType: 0,
+      orderItems: this.products,
+      name: this.selectedcustomer?.['userName'],
+      ItemId: this.selectedProduct?.['id'],
+      OrderItemID: 0,
+      Quantity: this.selectedProduct?.['quantity'],
+      ItemName: this.selectedProduct?.['name'],
+      Price: this.selectedProduct?.['buyPrice'],
+      Total: this.finalTotal,
+      Tax: this.totalTax,
+      totalDiscount: this.totalDiscount,
+      buyPrice: this.selectedProduct?.['buyPrice'],
+      perDiscount: 0,
+      govtGST: this.selectedProduct?.['govtGST']
+
+    }
+    this.orderService.saveOrder(order).subscribe(res => {
+      console.log(res);
+    })
+      ;
     this.selectedType = "Payment"
     const dialogRef = this.dialog.open(PaymentComponent, {
-      
+
       height: '451px',
       disableClose: true,
     });
@@ -229,19 +254,19 @@ export class SalesComponent implements OnInit {
             else {
 
               const productPayload = {
-                "id": p['id'],
+                "ItemID": p['id'],
                 "name": p["name"],
                 "quantity": 1,
-                "tax":0,
+                "tax": 0,
                 "sellPrice": p["sellPrice"],
                 "total": p["sellPrice"],
                 "subTotal": p["subTotal"],
-                "govtGST":p["govtGST"],
-                "stateGST":p["stateGST"],
-                "isisTaxIncluded":p["isTaxIncluded"]
+                "govtGST": p["govtGST"],
+                "stateGST": p["stateGST"],
+                "isisTaxIncluded": p["isTaxIncluded"]
               }
 
-             
+
               this.products.push(productPayload);
             }
           });
@@ -251,23 +276,23 @@ export class SalesComponent implements OnInit {
     )
   }
   getTotal(p: any, tax: number) {
-   
-    let total=0;
-    if(p.isTaxIncluded) {
-      
-      total= p.sellPrice * p.quantity;
+
+    let total = 0;
+    if (p.isTaxIncluded) {
+
+      total = p.sellPrice * p.quantity;
     } else {
-      total= (p.sellPrice+tax) * p.quantity;
+      total = (p.sellPrice + tax) * p.quantity;
     }
     return total;
   }
   getTaxForItem(p: Product) {
-   let tax=0;
-    if(p.isTaxIncluded) {
-      tax= (p.sellPrice*(p.govtGST+p.stateGST)/100);
+    let tax = 0;
+    if (p.isTaxIncluded) {
+      tax = (p.sellPrice * (p.govtGST + p.stateGST) / 100);
     } else {
-     
-      tax= p.sellPrice-(p.sellPrice*(100-p.govtGST-p.stateGST)/100);
+
+      tax = p.sellPrice - (p.sellPrice * (100 - p.govtGST - p.stateGST) / 100);
     }
     return tax;
   }
@@ -277,22 +302,26 @@ export class SalesComponent implements OnInit {
     this.clearBill();
     this.products.forEach(product => {
       //indivisual product update
-      let tax=this.getTaxForItem(product);
-      product["tax"]=tax * product.quantity;
-      product["total"]= this.getTotal(product,tax);
+      let tax = this.getTaxForItem(product);
+      product["tax"] = tax * product.quantity;
+      product["total"] = this.getTotal(product, tax);
 
       this.totalBefore = this.totalBefore + product.total;
-      this.totalTax = this.totalTax + product["tax"] ;
+      this.totalTax = this.totalTax + product["tax"];
       this.totalDiscount = 0
-      this.finalTotal = this.totalBefore - this.totalDiscount;
-      
+      this.final = this.totalBefore - this.totalDiscount;
+    
+      // this.final=this.finalTotal - this.totalDiscount;
 
     })
   }
+
+
+
   clearBill() {
     this.totalBefore = 0
     this.totalTax = 0
-    this.totalDiscount 
+    this.totalDiscount
     this.finalTotal = 0
   }
 
@@ -314,7 +343,7 @@ export class SalesComponent implements OnInit {
 
 
 
-  
+
   decrementQuantity(product: any): void {
     if (product.quantity > 1) {
       product.quantity--;
