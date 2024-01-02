@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ProductServiceService } from '../services/product-service.service';
 import { Product } from '../beans/Product';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -42,7 +42,8 @@ export class SalesComponent implements OnInit {
 
 
   constructor(private productService: ProductServiceService,
-    private dialog: MatDialog, private router: Router, private orderService: OrderService) {
+    private dialog: MatDialog, private router: Router, 
+    private orderService: OrderService,private el: ElementRef) {
 
   }
 
@@ -172,16 +173,15 @@ export class SalesComponent implements OnInit {
       orderItems: this.products,
       name: this.selectedcustomer?.['userName'],
       ItemId: this.selectedProduct?.['id'],
-      OrderItemID: 0,
-      Quantity: this.selectedProduct?.['quantity'],
+      totalQuantity: this.selectedProduct?.['quantity'],
       ItemName: this.selectedProduct?.['name'],
       Price: this.selectedProduct?.['buyPrice'],
-      Total: this.finalTotal,
+      gTotal: this.totalBefore,
       Tax: this.totalTax,
       totalDiscount: this.totalDiscount,
       buyPrice: this.selectedProduct?.['buyPrice'],
       perDiscount: 0,
-      govtGST: this.selectedProduct?.['govtGST']
+      govtGST: this.selectedProduct?.['govtGST'],
 
     }
     this.orderService.saveOrder(order).subscribe(res => {
@@ -253,8 +253,8 @@ export class SalesComponent implements OnInit {
             }
             else {
 
-              const productPayload = {
-                "ItemID": p['id'],
+              const productPayload= {
+                "ItemID ": p['id'],
                 "name": p["name"],
                 "quantity": 1,
                 "tax": 0,
@@ -365,6 +365,27 @@ export class SalesComponent implements OnInit {
     if (index >= 0 && index < this.products.length) {
       this.products.splice(index, 1);
       this.selectedRow = -1;
+    }
+  }
+
+
+  toggleFullScreen() {
+    const elem: any = this.el.nativeElement;
+
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { 
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { 
+      elem.msRequestFullscreen();
+    }
+  }
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'F' || event.key === 'f') {
+      this.toggleFullScreen();
     }
   }
 }

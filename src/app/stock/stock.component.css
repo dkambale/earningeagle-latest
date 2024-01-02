@@ -1,7 +1,7 @@
 .container {
     background-color: rgb(63, 63, 63);
-    height: 650px;
-    width: 2000px;
+    height: 100%;
+    width: 100%;
 
 }
 
@@ -14,5 +14,20 @@
 
 .bg {
     background-color: rgb(40, 40, 40);
-    border: rgb(40, 40, 40)
+    border: white;
 }
+
+.grid-col{
+    color: white;
+}
+
+.fullscreen-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
