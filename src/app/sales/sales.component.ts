@@ -34,16 +34,17 @@ export class SalesComponent implements OnInit {
   totalBefore: number = 0;
   totalTax: number = 0;
   totalDiscount: number = 0;
+  totalQuantity: number = 0;
   selectedcustomer = undefined;
   finalTotal: number = 0;
-  final:number=0;
+  final: number = 0;
   tax: number = 0;
   dialogConfig = new MatDialogConfig();
 
 
   constructor(private productService: ProductServiceService,
-    private dialog: MatDialog, private router: Router, 
-    private orderService: OrderService,private el: ElementRef) {
+    private dialog: MatDialog, private router: Router,
+    private orderService: OrderService, private el: ElementRef) {
 
   }
 
@@ -94,18 +95,18 @@ export class SalesComponent implements OnInit {
     this.selectedRow = index;
   }
 
-  openCalculator1(): void {
-    const dialogRef = this.dialog.open(CalculatorComponent, {
-      width: '400px',
-      disableClose: true,
-    });
+  // openCalculator1(): void {
+  //   const dialogRef = this.dialog.open(CalculatorComponent, {
+  //     width: '400px',
+  //     disableClose: true,
+  //   });
 
 
-    dialogRef.afterClosed().subscribe(result => {
+  //   dialogRef.afterClosed().subscribe(result => {
 
-      console.log('Dialog closed with result:', result);
-    });
-  }
+  //     console.log('Dialog closed with result:', result);
+  //   });
+  // }
 
 
   openCalculator(): void {
@@ -119,8 +120,11 @@ export class SalesComponent implements OnInit {
 
       console.log('Dialog closed with result:', result);
       this.totalDiscount = Number.parseInt(result);
+      
     });
   }
+
+
   openCustomer(): void {
     const dialogRef = this.dialog.open(CustomerlistComponent, {
       width: '900px',
@@ -172,9 +176,9 @@ export class SalesComponent implements OnInit {
       orderType: 0,
       orderItems: this.products,
       name: this.selectedcustomer?.['userName'],
-      ItemId: this.selectedProduct?.['id'],
+      itemID:0,
       totalQuantity: this.selectedProduct?.['quantity'],
-      ItemName: this.selectedProduct?.['name'],
+      //ItemName: this.selectedProduct?.['name'],
       Price: this.selectedProduct?.['buyPrice'],
       gTotal: this.totalBefore,
       Tax: this.totalTax,
@@ -182,6 +186,8 @@ export class SalesComponent implements OnInit {
       buyPrice: this.selectedProduct?.['buyPrice'],
       perDiscount: 0,
       govtGST: this.selectedProduct?.['govtGST'],
+      remain :this.remain,
+      paidAmount:this.paidAmount
 
     }
     this.orderService.saveOrder(order).subscribe(res => {
@@ -201,9 +207,6 @@ export class SalesComponent implements OnInit {
       console.log('Dialog closed with result:', result);
     });
   }
-
-
-
 
   deleteItem(id: number) {
     alert("delete item with id");
@@ -252,17 +255,18 @@ export class SalesComponent implements OnInit {
 
             }
             else {
-
-              const productPayload= {
-                "ItemID ": p['id'],
-                "name": p["name"],
+              let totalTax=p["govtGST"]+p["stateGST"];
+              const productPayload = {
+                "itemID": p['id'],
+                "itemName": p["name"],
                 "quantity": 1,
-                "tax": 0,
-                "sellPrice": p["sellPrice"],
+                "price": p["sellPrice"],
                 "total": p["sellPrice"],
                 "subTotal": p["subTotal"],
                 "govtGST": p["govtGST"],
                 "stateGST": p["stateGST"],
+                "pertax": totalTax,
+                "tax":0,
                 "isisTaxIncluded": p["isTaxIncluded"]
               }
 
@@ -280,21 +284,21 @@ export class SalesComponent implements OnInit {
     let total = 0;
     if (p.isTaxIncluded) {
 
-      total = p.sellPrice * p.quantity;
+      total = p.price * p.quantity;
     } else {
-      total = (p.sellPrice + tax) * p.quantity;
+      total = (p.price + tax) * p.quantity;
     }
     return total;
   }
-  getTaxForItem(p: Product) {
+  getTaxForItem(p: any) {
     let tax = 0;
-    if (p.isTaxIncluded) {
-      tax = (p.sellPrice * (p.govtGST + p.stateGST) / 100);
+    if (!p.isTaxIncluded) {
+      tax = (p.price * (p.pertax) / 100);
     } else {
 
-      tax = p.sellPrice - (p.sellPrice * (100 - p.govtGST - p.stateGST) / 100);
+      tax = p.price - (p.price * (100 - p.pertax) / 100);
     }
-    return tax;
+    return Number.parseInt(""+tax);
   }
 
   finalBill() {
@@ -308,9 +312,9 @@ export class SalesComponent implements OnInit {
 
       this.totalBefore = this.totalBefore + product.total;
       this.totalTax = this.totalTax + product["tax"];
-      this.totalDiscount = 0
+      this.totalDiscount = this.totalDiscount;
       this.final = this.totalBefore - this.totalDiscount;
-    
+
       // this.final=this.finalTotal - this.totalDiscount;
 
     })
@@ -321,7 +325,7 @@ export class SalesComponent implements OnInit {
   clearBill() {
     this.totalBefore = 0
     this.totalTax = 0
-    this.totalDiscount
+    this.totalDiscount=0;
     this.finalTotal = 0
   }
 
@@ -365,6 +369,7 @@ export class SalesComponent implements OnInit {
     if (index >= 0 && index < this.products.length) {
       this.products.splice(index, 1);
       this.selectedRow = -1;
+      this.finalBill()
     }
   }
 
@@ -376,9 +381,9 @@ export class SalesComponent implements OnInit {
       elem.requestFullscreen();
     } else if (elem.mozRequestFullScreen) {
       elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) { 
+    } else if (elem.webkitRequestFullscreen) {
       elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { 
+    } else if (elem.msRequestFullscreen) {
       elem.msRequestFullscreen();
     }
   }
@@ -388,4 +393,28 @@ export class SalesComponent implements OnInit {
       this.toggleFullScreen();
     }
   }
-}
+
+  calculateTotalQuantity() {
+    for ( const product of this.products) {
+      this.totalQuantity += product.quantity;
+    }
+  }
+
+
+  paidAmount: number = 0;
+remain : number =0;
+
+  onPaidAmountChange(event: any): void {
+    const inputValue = event?.target?.value;
+  
+    if (inputValue !== null && inputValue !== undefined) {
+      this.paidAmount = Number(inputValue);
+      this.calculateRemainingAmount();
+    }
+  }
+
+  calculateRemainingAmount(): void {
+    this.remain = this.final - this.totalDiscount - this.paidAmount;
+    
+  }
+} 

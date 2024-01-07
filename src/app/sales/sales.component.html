@@ -1,6 +1,6 @@
 <div class="col-12">
   <button class="fullscreen-btn" (click)="toggleFullScreen()">Fullscreen</button>
-  
+
   <div class="card">
     <div class="card-body">
       <div class="row no-gutters">
@@ -81,9 +81,9 @@
                             <tr *ngFor="let prod of products; let indexOfelement = index"
                               (click)="selectedproductsRow(indexOfelement, prod)">
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
-                                prod?.id }}</td>
+                                indexOfelement+1 }}</td>
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'"> {{
-                                prod?.name }}</td>
+                                prod?.itemName }}</td>
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">
 
                                 <button class="quantity-btn fa fa-minus-square-o"
@@ -96,7 +96,7 @@
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
                                 prod?.tax }}</td>
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
-                                prod?.sellPrice }}</td>
+                                prod?.price }}</td>
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
                                 prod.total }}</td>
                               <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">
@@ -133,9 +133,10 @@
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col">Tax: {{ totalTax}}</th>
+                    <th scope="col">Disscount: {{totalDiscount}</th>
                   </tr>
                 </thead>
-                <thead class="text-uppercase bg-primary">
+                <!-- <thead class="text-uppercase bg-primary">
                   <tr class="text-white">
                     <th scope="col"></th>
                     <th scope="col"></th>
@@ -144,7 +145,7 @@
                     <th scope="col"></th>
                     <th scope="col">Disscount: {{totalDiscount}}</th>
                   </tr>
-                </thead>
+                </thead> -->
                 <thead class="text-uppercase bg-primary">
                   <tr class="text-white">
                     <th scope="col"></th>
@@ -155,17 +156,20 @@
                     <th scope="col">final Total: {{final}}</th>
                   </tr>
                 </thead>
-                <!-- <tbody  *ngIf="products.length>0">
-                <tr>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col">{{finalTotal}}</th>
-
-              </tr>
-              </tbody> -->
+                <!-- <p>Total Quantity: {{ calculateTotalQuantity() }}</p> -->
+                <tbody *ngIf="products.length>0">
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Total Quantity: {{ totalQuantity}}</th>
+                    <th scope="col"><label for="language" >Paid Amount :</label>
+                      <input [(ngModel)]="paidAmount" (input)="onPaidAmountChange($event)" placeholder="Enter Paid Amount">
+                      <th scope="col">Remaining Amount :{{remain}}</th>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>

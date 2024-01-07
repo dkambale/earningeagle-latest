@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Order } from '../beans/order';
 import { OrderItem } from '../beans/order-item';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -41,25 +42,25 @@ export class OrderService {
   }
 
   getOrderList(type: number) {
-    return this.http.get<Order[]>(this.environment.apiURL + 'order/list/' + type).toPromise();
-  }
+    return this.http.get<Order[]>(this.environment.apiURL + 'order/list/' + type);
+  }                  
 
   getOrderByID(id: number) {
     return this.http.get<Order>(this.environment.apiURL + '/Order/' + id);
   }
 
   deleteOrder(id: number) {
-    return this.http.delete(this.environment.apiURL + 'Order/' + id).toPromise();
+    return this.http.delete(this.environment.apiURL + 'Order/' + id);
   }
 
   getItemListByOrderID(orderId: number) {
-    return this.http.get<OrderItem[]>(this.environment.apiURL + '/TodaysOrderList/' + orderId).toPromise();
+    return this.http.get<OrderItem[]>(this.environment.apiURL + '/TodaysOrderList/' + orderId);
   }
 
   getOrderMapForCustomerId(customerId: number) {
-    return this.http.get<any>(this.environment.apiURL + '/ordersForCustomerId/' + customerId).toPromise();
+    return this.http.get<any>(this.environment.apiURL + '/ordersForCustomerId/' + customerId);
   }
   getOrderMapForVendorId(vendorId: number) {
-    return this.http.get<any>(this.environment.apiURL + '/ordersForVendorId/' + vendorId).toPromise();
+    return this.http.get<any>(this.environment.apiURL + '/ordersForVendorId/' + vendorId);
   }
 }

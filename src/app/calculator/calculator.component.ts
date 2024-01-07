@@ -11,11 +11,11 @@ export class CalculatorComponent {
 
 
   private firstValue: number | null = 0;
-  
+
   constructor(
     private dialogRef: MatDialogRef<CalculatorComponent>, @Inject(MAT_DIALOG_DATA) data: any
   ) {
-    
+
   }
 
   save() {
@@ -24,11 +24,12 @@ export class CalculatorComponent {
 
 
   close() {
-    this.dialogRef.close( this.displayValue);
+
+    this.dialogRef.close(this.displayValue);
   }
 
   displayValue: string = '';
-  
+
 
   storeFirstValue(): void {
     const currentValue = parseFloat(this.displayValue);
@@ -101,13 +102,15 @@ export class CalculatorComponent {
       case '%':
         this.storeFirstValue();
         break;
-        case 'Enter':
-          if (this.firstValue !== null) {
-            this.calculatePercentage();
-          } else {
-            this.calculateResult();
-          }
+      case 'Enter':
+        if (this.firstValue !== null) {
+          this.calculatePercentage();
+        } else {
+          this.calculateResult();
+        }
         break;
+      case 'Shift':
+        this.dialogRef.close(this.displayValue);
     }
   }
 }
