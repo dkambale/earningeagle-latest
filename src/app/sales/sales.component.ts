@@ -186,8 +186,8 @@ export class SalesComponent implements OnInit {
       buyPrice: this.selectedProduct?.['buyPrice'],
       perDiscount: 0,
       govtGST: this.selectedProduct?.['govtGST'],
-      remain :this.remain,
-      paidAmount:this.paidAmount
+      balanceAmount :this.balanceAmount,
+      amountPaid:this.amountPaid
 
     }
     this.orderService.saveOrder(order).subscribe(res => {
@@ -401,20 +401,26 @@ export class SalesComponent implements OnInit {
   }
 
 
-  paidAmount: number = 0;
-remain : number =0;
+  amountPaid: number = 0;
+balanceAmount : number =0;
 
   onPaidAmountChange(event: any): void {
     const inputValue = event?.target?.value;
   
     if (inputValue !== null && inputValue !== undefined) {
-      this.paidAmount = Number(inputValue);
-      this.calculateRemainingAmount();
+      this.amountPaid = Number(inputValue);
+      this.calculatebalanceAmountingAmount();
     }
   }
 
-  calculateRemainingAmount(): void {
-    this.remain = this.final - this.totalDiscount - this.paidAmount;
+  calculatebalanceAmountingAmount(): void {
+    this.balanceAmount = this.final - this.totalDiscount - this.amountPaid;
     
   }
+
+// gTotal: number=0;
+
+//   grandTotal(){
+//   this.gTotal = this.final-this.totalDiscount;
+//   }
 } 

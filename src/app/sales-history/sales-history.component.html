@@ -1,4 +1,6 @@
-<div>
+hello
+
+<!-- <div>
     <div class=" grid-col " style="height: 100px;margin-bottom: 0.5px;">
         <div class="col-lg-2 clearfix mb-2">
             <input type="text" name="search" placeholder="Document number">
@@ -8,7 +10,7 @@
                 <option value="volvo">POS</option>
                 <option value="saab">All registers</option>
             </select>
-        </div>
+        </div> 
         <div class="fw-icons0 col-lg-1 col-sm-5 grid-col" style="float: left; height: 41.5px;margin-bottom: 0.5px;">
             <i class="fa fa-refresh">-Refresh</i>
         </div>
@@ -34,7 +36,7 @@
         <div class="fw-icons0 col-lg-1 col-sm-5 grid-col fa fa-file-text-o"
             style="float: left; height: 41.5px;margin-bottom: 0.5px;">
             Receipt
-        </div>
+        </div>  
         <div class="fw-icons0 col-lg-1 col-sm-5 grid-col ti-email"
             style="float: left;height: 41.5px;margin-bottom: 0.5px;">
             Send Mail
@@ -59,34 +61,27 @@
                         <thead class="text-uppercase bg-dark">
                             <tr class="text-white">
                                 <th scope="col">ID</th>
-                                <th scope="col">Document type </th>
-                                <th scope="col">User</th>
-                                <th scope="col">Number</th>
-                                <th scope="col">External document</th>
-                                <th scope="col">Customer</th>
-                                <th scope="col">Created</th>
-                                <th scope="col">POS</th>
-                                <th scope="col">Order number</th>
-                                <th scope="col">Pyament Type</th>
+                                <th scope="col">Grand Total</th>
+                                <th scope="col">Tax</th>
                                 <th scope="col">Discount</th>
-                                <th scope="col">Total</th>
+                                <th scope="col">Paid Amount</th>
+                                <th scope="col">Reamaining Ammount</th>
+                                
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th></th>
-                                <td>Cash</td>
-                                <td>Sam</td>
-                                <td>120</td>
-                                <td>12345</td>
-                                <td>Mark</td>
-                                <td>09 / 07 / 2018</td>
-                                <td>POS</td>
-                                <td>101</td>
-                                <td>Credit card</td>
-                                <td>10%</td>
-                                <td>$120</td>
-                            </tr>
+                        <tbody *ngIf="order.length>0">
+                            <tr *ngFor="let ord of Order; let indexOfelement = index"
+                            (click)="selectedordersRow(indexOfelement, ord)"></tr>
+                                
+                                <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
+                                    indexOfelement+1 }}</td>
+                                <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ord.gTotal}}</td>
+                                <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ord.totalTax}}</td>
+                                <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ord.totalDiscount}}</td>
+                                <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ord.paidAmount}}</td>
+                                <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ord.remain}}</td>
+                             
+                            
                         </tbody>
                     </table>
                 </div>
@@ -143,4 +138,4 @@
     <div class="mr-5" style="float: right;">
         <button type="button" class="btn btn-flat btn-primary mb-3">Close</button>
     </div>
-</div>
+</div> -->

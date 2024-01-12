@@ -122,7 +122,7 @@
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
-                    <th scope="col"> Sub Total: {{totalBefore}}</th>
+                    <th scope="col"> Sub Total: {{final}}</th>
                   </tr>
                 </thead>
                 <thead class="text-uppercase bg-primary">
@@ -133,7 +133,7 @@
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col">Tax: {{ totalTax}}</th>
-                    <th scope="col">Disscount: {{totalDiscount}</th>
+                    <th scope="col">Disscount: {{totalDiscount}}</th>
                   </tr>
                 </thead>
                 <!-- <thead class="text-uppercase bg-primary">
@@ -164,10 +164,10 @@
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
-                    <th scope="col">Total Quantity: {{ totalQuantity}}</th>
+                    <th scope="col">Total Quantity: {{totalQuantity}}</th>
                     <th scope="col"><label for="language" >Paid Amount :</label>
-                      <input [(ngModel)]="paidAmount" (input)="onPaidAmountChange($event)" placeholder="Enter Paid Amount">
-                      <th scope="col">Remaining Amount :{{remain}}</th>
+                      <input [(ngModel)]="amountPaid" (input)="onPaidAmountChange($event)" placeholder="Enter Paid Amount">
+                      <th scope="col">Remaining Amount :{{balanceAmount}}</th>
                   </tr>
                 </tbody>
               </table>
