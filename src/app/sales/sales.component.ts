@@ -130,12 +130,15 @@ export class SalesComponent implements OnInit {
       width: '900px',
       height: '400px',
       disableClose: true,
+      
+      
     });
 
     dialogRef.afterClosed().subscribe(customer => {
 
       console.log('Selected Customer:', customer);
       this.selectedcustomer = customer;
+     
     });
   }
 
@@ -173,9 +176,10 @@ export class SalesComponent implements OnInit {
   openPayment(): void {
     let order = {
       orderID: null,
-      orderType: 0,
+      // orderType: 0,
       orderItems: this.products,
       name: this.selectedcustomer?.['userName'],
+      customerName: this.selectedcustomer?.['name'],
       itemID:0,
       totalQuantity: this.selectedProduct?.['quantity'],
       //ItemName: this.selectedProduct?.['name'],
@@ -187,7 +191,9 @@ export class SalesComponent implements OnInit {
       perDiscount: 0,
       govtGST: this.selectedProduct?.['govtGST'],
       balanceAmount :this.balanceAmount,
-      amountPaid:this.amountPaid
+      amountPaid:this.amountPaid,
+      "isActive":1,
+      "orderType":1,
 
     }
     this.orderService.saveOrder(order).subscribe(res => {
@@ -267,7 +273,10 @@ export class SalesComponent implements OnInit {
                 "stateGST": p["stateGST"],
                 "pertax": totalTax,
                 "tax":0,
-                "isisTaxIncluded": p["isTaxIncluded"]
+                "isActive":1,
+                "orderType":1,
+                "isisTaxIncluded": p["isTaxIncluded"],
+               " customerName":p["customerName"]
               }
 
 
@@ -276,7 +285,7 @@ export class SalesComponent implements OnInit {
           });
         }
         this.finalBill();
-      }
+      }    
     )
   }
   getTotal(p: any, tax: number) {
@@ -316,7 +325,7 @@ export class SalesComponent implements OnInit {
       this.final = this.totalBefore - this.totalDiscount;
 
       // this.final=this.finalTotal - this.totalDiscount;
-
+      this.calculateTotalQuantity();
     })
   }
 
@@ -394,11 +403,14 @@ export class SalesComponent implements OnInit {
     }
   }
 
-  calculateTotalQuantity() {
-    for ( const product of this.products) {
+  calculateTotalQuantity(): void {
+    this.totalQuantity = 0;
+  
+    for (const product of this.products) {
       this.totalQuantity += product.quantity;
     }
   }
+  
 
 
   amountPaid: number = 0;

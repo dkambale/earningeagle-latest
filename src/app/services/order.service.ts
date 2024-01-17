@@ -42,7 +42,9 @@ export class OrderService {
   }
 
   getOrderList(type: number) {
-    return this.http.get<Order[]>(this.environment.apiURL + 'order/list/' + type);
+    let url =this.environment.apiURL + '/order/list/' + type;
+    console.log(url);
+    return this.http.get<any>(url);
   }                  
 
   getOrderByID(id: number) {

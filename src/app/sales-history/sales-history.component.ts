@@ -16,12 +16,16 @@ export class SalesHistoryComponent implements OnInit {
 
   constructor(private orderService: OrderService) { }
 
+
+
+
+  
   ngOnInit(): void {
     this.loadOrderList();
   }
 
   loadOrderList(): void {
-    const orderType = 0;
+    const orderType = 1;
     this.orderService.getOrderList(orderType).subscribe(orders => {
       this.orderList = orders;
       console.log(orders);
@@ -36,25 +40,6 @@ export class SalesHistoryComponent implements OnInit {
     console.log(order);
     this.selectedOrder = order;
     this.selectedRow = index;
-  }
-
-
-
-
-
-  onSubmit() {
-    const numericSearchValue = parseFloat(this.searchValue);
-    if (!isNaN(numericSearchValue)) {
-      this.orderService.getOrderList(numericSearchValue).subscribe(
-        res => {
-          res.forEach(order => {
-            console.log(order.orderID);
-          });
-        }
-      );
-    } else {
-      console.error("Invalid search value. Please enter a valid number.");
-    }
   }
 
 }

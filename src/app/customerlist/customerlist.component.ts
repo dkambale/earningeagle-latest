@@ -22,7 +22,7 @@ export class CustomerlistComponent {
   constructor(private fb: FormBuilder, private customerService: CustomerService, private dialogRef: MatDialogRef<CustomerlistComponent>) {
     this.customerForm = this.fb.group({
       id: [],
-      name: ['', Validators.required],
+      customerName: ['', Validators.required],
       contactNumber: ['', Validators.required],
       emailId: ['', Validators.required],
       address: ['', Validators.required],

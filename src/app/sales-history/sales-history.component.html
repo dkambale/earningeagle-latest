@@ -1,6 +1,6 @@
-hello
 
-<!-- <div>
+
+<div>
     <div class=" grid-col " style="height: 100px;margin-bottom: 0.5px;">
         <div class="col-lg-2 clearfix mb-2">
             <input type="text" name="search" placeholder="Document number">
@@ -61,26 +61,30 @@ hello
                         <thead class="text-uppercase bg-dark">
                             <tr class="text-white">
                                 <th scope="col">ID</th>
+                                <th >Customer Name</th>
+                                <th>Created Date</th>
                                 <th scope="col">Grand Total</th>
-                                <th scope="col">Tax</th>
-                                <th scope="col">Discount</th>
-                                <th scope="col">Paid Amount</th>
-                                <th scope="col">Reamaining Ammount</th>
+                                <th scope="col">Total Discount</th>
+
+                                <th scope="col">Amount Paid</th>
+                                <th scope="col">Balance Amount</th>
+                                
                                 
                             </tr>
                         </thead>
-                        <tbody *ngIf="order.length>0">
-                            <tr *ngFor="let ord of Order; let indexOfelement = index"
-                            (click)="selectedordersRow(indexOfelement, ord)"></tr>
+                        <tbody *ngIf="orderList.length>0">
+                            <tr *ngFor="let ord of orderList ;let indexOfelement=index;"
+                            (click)="selectedordersRow(indexOfelement,ord)" >
                                 
-                                <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{
-                                    indexOfelement+1 }}</td>
-                                <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ord.gTotal}}</td>
-                                <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ord.totalTax}}</td>
-                                <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ord.totalDiscount}}</td>
-                                <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ord.paidAmount}}</td>
-                                <td [ngClass]="selectedRow == indexOfelement ? 'selectedCss' : 'deselectedCss'">{{ord.remain}}</td>
-                             
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'" >{{indexOfelement+1}}</td>
+                                <td  >{{ord.customerName}}</td>
+                                <td  ></td>
+                                <td  >{{ord.gTotal}}</td>
+                                <td  >{{ord.totalDiscount}}</td>
+                                <td  >{{ord.amountPaid}}</td>
+                                <td  >{{ord.balanceAmount}}</td>
+                                
+                        </tr>
                             
                         </tbody>
                     </table>
@@ -111,18 +115,18 @@ hello
                                 <th scope="col">Total</th>
                             </tr>
                         </thead>
-                        <tbody *ngIf="orderList.length>0">
-                            <tr *ngFor="let ord of orderList ;">
-                                <td>{{ord.gTotal}}</td>
-                                <td>{{ord.gTotal}}</td>
-                                <td>{{ord.gTotal}}</td>
-                                <td>{{ord.gTotal}}</td>
-                                <td>{{ord.gTotal}}</td>
-                                <td>{{ord.gTotal}}</td>
-                                <td>{{ord.totalTax}}</td>
-                                <td>{{ord.gTotal}}</td>
-                                <td>{{ord.totalDiscount}}</td>
-                                <td>{{ord.gTotal}}</td>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -138,4 +142,4 @@ hello
     <div class="mr-5" style="float: right;">
         <button type="button" class="btn btn-flat btn-primary mb-3">Close</button>
     </div>
-</div> -->
+</div> 
