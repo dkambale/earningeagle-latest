@@ -1,0 +1,12 @@
+table1 {
+    border-collapse: collapse;
+    width: 200px;
+  }
+
+  th1, td1 {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  

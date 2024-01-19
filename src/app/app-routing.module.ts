@@ -19,6 +19,7 @@ import { RefundComponent } from './refund/refund.component';
 import { DocumentComponent } from './document/document.component';
 import { CommentComponent } from './comment/comment.component';
 import { StockComponent } from './stock/stock.component';
+import { PrintComponent } from './print/print.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -41,6 +42,7 @@ const routes: Routes = [
       { path: 'salesHistory', component: SalesHistoryComponent},
       { path: 'comment', component: CommentComponent},
       { path: 'stock', component: StockComponent},
+      { path: 'print', component: PrintComponent},
       { path: 'document', component: DocumentComponent}
     ]
   }

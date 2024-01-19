@@ -30,6 +30,7 @@ import { RefundComponent } from './refund/refund.component';
 import { DocumentComponent } from './document/document.component';
 import { CommentComponent } from './comment/comment.component';
 import { StockComponent } from './stock/stock.component';
+import { PrintComponent } from './print/print.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { StockComponent } from './stock/stock.component';
     RefundComponent,
     DocumentComponent,
     CommentComponent,
-    StockComponent
+    StockComponent,
+    PrintComponent
   ],
   imports: [
     BrowserModule,

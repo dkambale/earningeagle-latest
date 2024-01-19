@@ -19,7 +19,7 @@ export class SalesHistoryComponent implements OnInit {
 
 
 
-  
+
   ngOnInit(): void {
     this.loadOrderList();
   }
@@ -42,4 +42,34 @@ export class SalesHistoryComponent implements OnInit {
     this.selectedRow = index;
   }
 
+
+  printOrder() {
+    if (this.selectedRow !== undefined && this.selectedRow !== null && this.selectedOrder) {
+      const printWindow = window.open('', 'Earning Eagle')!; 
+  
+      const printContent = `
+      <div style="background-color: black; color: white;widt:500px">
+      <h style="float:right;"> Earning Eagle</h>
+        <h2 >Order Details</h2>
+        <p><strong>Customer Name:</strong> ${this.selectedOrder.customerName}</p>
+        
+  
+        <h3>Document Items</h3>
+        <h3>Balance Amount :  ${this.selectedOrder.balanceAmount}</h3>
+        
+  
+        <p>Printed on: ${new Date().toLocaleString()}</p>
+        </div>
+      `;
+  
+      printWindow.document.write(printContent);
+  
+      printWindow.document.close();
+  
+      printWindow.print();
+    } else {
+      console.log('No order selected for printing.');
+    }
+  }
+   
 }

@@ -25,7 +25,7 @@
             Customer
         </div>
         <div class="fw-icons0 col-lg-1 col-sm-5 grid-col" style="float: left;  height: 41.5px;margin-bottom: 0.5px;">
-            <div class="ti-printer ti-notepad">
+            <div (click)="printOrder()" class="ti-printer ti-notepad">
                 Print
             </div>
         </div>
@@ -77,12 +77,12 @@
                             (click)="selectedordersRow(indexOfelement,ord)" >
                                 
                                 <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'" >{{indexOfelement+1}}</td>
-                                <td  >{{ord.customerName}}</td>
-                                <td  ></td>
-                                <td  >{{ord.gTotal}}</td>
-                                <td  >{{ord.totalDiscount}}</td>
-                                <td  >{{ord.amountPaid}}</td>
-                                <td  >{{ord.balanceAmount}}</td>
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'" >{{ord.customerName}}</td>
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'" ></td>
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'" >{{ord.gTotal}}</td>
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'" >{{ord.totalDiscount}}</td>
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'" >{{ord.amountPaid}}</td>
+                                <td [ngClass]="selectedRow==indexOfelement? 'selectedCss':'deselectedCss'" >{{ord.balanceAmount}}</td>
                                 
                         </tr>
                             
